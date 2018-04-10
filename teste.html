@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.4.9/aframe/build/aframe-ar.js"> </script>
+<script src="AR.js/aframe/build/aframe-ar.js"> </script>
+
+<script>
+    AFRAME.registerComponent('registerevents', {
+        init: function () {
+            var marker = this.el;
+
+            // Make the element emit events when found and when lost.
+            marker.setAttribute('emitevents', 'true');
+
+            marker.addEventListener('markerFound', function() {
+                var markerId = marker.id;
+                console.log('markerFound', markerId);
+                alert('hey');
+            });
+
+            marker.addEventListener('markerLost', function() {
+                var markerId = marker.id;
+                console.log('markerLost', markerId);
+            });
+        }
+    });
+</script>
 
 <body style='margin : 0px; overflow: hidden;'>
 <a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
@@ -12,7 +34,7 @@
         <a-box position='0 0.5 0' material='color: green;'></a-box>
     </a-marker>
     <!-- handle barcode marker -->
-    <a-marker type='barcode' value='1'>
+    <a-marker type='barcode' value='0' registerevents>
         <a-box position='0 0.5 0' material='color: blue;'></a-box>
     </a-marker>
     <!-- add a simple camera -->
