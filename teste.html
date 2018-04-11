@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+<script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
 <script src="AR.js/aframe/build/aframe-ar.js"> </script>
 
 <script>
@@ -13,7 +13,6 @@
             marker.addEventListener('markerFound', function() {
                 var markerId = marker.id;
                 console.log('markerFound', markerId);
-                alert('hey');
             });
 
             marker.addEventListener('markerLost', function() {
@@ -25,7 +24,15 @@
 </script>
 
 <body style='margin : 0px; overflow: hidden;'>
-<a-scene embedded arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+<a-scene embedded
+         arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
+         antialias="true"
+         outline>
+
+    <a-assets>
+        <a-asset-item id="cd-model" src="models/cd/scene.gltf"></a-asset-item>
+    </a-assets>
+
     <a-marker type='pattern' url='pattern-marker2.patt'>
         <a-box position='0 0.5 0' material='color: red;'></a-box>
     </a-marker>
@@ -35,11 +42,12 @@
     </a-marker>
     <!-- handle barcode marker -->
     <a-marker type='barcode' value='0' registerevents>
-        <a-box position='0 0.5 0' material='color: blue;'></a-box>
+        <a-entity scale="1 1 1" gltf-model="#cd-model"></a-entity>
     </a-marker>
     <!-- add a simple camera -->
     <a-entity camera></a-entity>
 
 </a-scene>
+<!-- Made with Poly by Google -->
 </body>
 </html>
