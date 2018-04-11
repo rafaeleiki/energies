@@ -1,0 +1,764 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 362,
+      "max": [
+        1.4400999546051025,
+        1,
+        -0.011610000394284725
+      ],
+      "min": [
+        -1.4400999546051025,
+        -1,
+        -0.067579999566078186
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 4344,
+      "componentType": 5126,
+      "count": 362,
+      "max": [
+        0.7071068286895752,
+        0.81954318284988403,
+        1
+      ],
+      "min": [
+        -0.7071068286895752,
+        -0.81954318284988403,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 362,
+      "max": [
+        1,
+        0.7253265380859375,
+        0.66073030233383179,
+        1
+      ],
+      "min": [
+        -1,
+        -0.72532689571380615,
+        -0.85185521841049194,
+        -1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 362,
+      "max": [
+        1,
+        1.3167999982833862
+      ],
+      "min": [
+        0,
+        0.24731999635696411
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 1416,
+      "max": [
+        361
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 8688,
+      "componentType": 5126,
+      "count": 3177,
+      "max": [
+        1.3004499673843384,
+        0.98325997591018677,
+        0.23431000113487244
+      ],
+      "min": [
+        -1.3508199453353882,
+        -0.98821002244949341,
+        -0.29473000764846802
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 46812,
+      "componentType": 5126,
+      "count": 3177,
+      "max": [
+        0.99999958276748657,
+        1,
+        0.99998646974563599
+      ],
+      "min": [
+        -0.99995023012161255,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 5792,
+      "componentType": 5126,
+      "count": 3177,
+      "max": [
+        0.99998641014099121,
+        1,
+        0.99999964237213135,
+        1
+      ],
+      "min": [
+        -1,
+        -0.98596340417861938,
+        -0.99999964237213135,
+        -1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2896,
+      "componentType": 5126,
+      "count": 3177,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 5664,
+      "componentType": 5125,
+      "count": 12972,
+      "max": [
+        3176
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 84936,
+      "componentType": 5126,
+      "count": 3195,
+      "max": [
+        1.3508199453353882,
+        0.9830399751663208,
+        0.22655999660491943
+      ],
+      "min": [
+        -1.3508199453353882,
+        -1.0069999694824219,
+        -0.027930000796914101
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 123276,
+      "componentType": 5126,
+      "count": 3195,
+      "max": [
+        0.99942833185195923,
+        1,
+        1
+      ],
+      "min": [
+        -0.99942833185195923,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 56624,
+      "componentType": 5126,
+      "count": 3195,
+      "max": [
+        1,
+        1,
+        0.99970865249633789,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 161616,
+      "componentType": 5126,
+      "count": 3195,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        1,
+        1,
+        1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 28312,
+      "componentType": 5126,
+      "count": 3195,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 57552,
+      "componentType": 5125,
+      "count": 13284,
+      "max": [
+        3194
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 199956,
+      "componentType": 5126,
+      "count": 348,
+      "max": [
+        1.3889600038528442,
+        1.0000699758529663,
+        0
+      ],
+      "min": [
+        -1.4400999546051025,
+        -1.0002100467681885,
+        -0.34307000041007996
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 204132,
+      "componentType": 5126,
+      "count": 348,
+      "max": [
+        0.79384064674377441,
+        0.81792223453521729,
+        1
+      ],
+      "min": [
+        -0.7071068286895752,
+        -0.81790947914123535,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 107744,
+      "componentType": 5126,
+      "count": 348,
+      "max": [
+        1,
+        0.74594259262084961,
+        0.86325442790985107,
+        1
+      ],
+      "min": [
+        -0.99989491701126099,
+        -0.74857693910598755,
+        -0.8649599552154541,
+        1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 53872,
+      "componentType": 5126,
+      "count": 348,
+      "max": [
+        0.99641001224517822,
+        1
+      ],
+      "min": [
+        -0.00047999998787418008,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 110688,
+      "componentType": 5125,
+      "count": 1416,
+      "max": [
+        347
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Tomations (https://sketchfab.com/Tomations)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/models/cbd8cc04489d41b08c1416c3425cfaf5",
+      "title": "Open Books"
+    },
+    "generator": "Sketchfab-3.18.2",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 116352,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 56656,
+      "byteOffset": 116352,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 208308,
+      "byteOffset": 173008,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 113312,
+      "byteOffset": 381316,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 494628,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_materials_pbrSpecularGlossiness"
+  ],
+  "extensionsUsed": [
+    "KHR_materials_pbrSpecularGlossiness"
+  ],
+  "images": [
+    {
+      "uri": "textures/Book_Cover_Blue_diffuse.jpeg"
+    },
+    {
+      "uri": "textures/Book_Pages.001_diffuse.jpeg"
+    },
+    {
+      "uri": "textures/Book_Cover_Red_diffuse.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "extensions": {
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "diffuseTexture": {
+            "index": 0,
+            "texCoord": 0
+          },
+          "glossinessFactor": 0,
+          "specularFactor": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "name": "Book_Cover_Blue"
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "extensions": {
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "diffuseTexture": {
+            "index": 1,
+            "texCoord": 0
+          },
+          "glossinessFactor": 0,
+          "specularFactor": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "name": "Book_Pages.001"
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "extensions": {
+        "KHR_materials_pbrSpecularGlossiness": {
+          "diffuseFactor": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "diffuseTexture": {
+            "index": 2,
+            "texCoord": 0
+          },
+          "glossinessFactor": 0,
+          "specularFactor": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "name": "Book_Cover_Red"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Open Book",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Open Book Pages.001",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TANGENT": 7,
+            "TEXCOORD_0": 8
+          },
+          "indices": 9,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Open Book Pages",
+      "primitives": [
+        {
+          "attributes": {
+            "COLOR_0": 13,
+            "NORMAL": 11,
+            "POSITION": 10,
+            "TANGENT": 12,
+            "TEXCOORD_0": 14
+          },
+          "indices": 15,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Open Book.001",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 17,
+            "POSITION": 16,
+            "TANGENT": 18,
+            "TEXCOORD_0": 19
+          },
+          "indices": 20,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "name": "Root"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        0.22971000000000005,
+        0.059230000000000012,
+        0,
+        0,
+        -0.059230000000000012,
+        0.22971000000000005,
+        0,
+        0,
+        0,
+        0,
+        0.23722000000000001,
+        0,
+        1.01031,
+        0.29188000000000008,
+        0.84230000000000005,
+        1
+      ],
+      "name": "Open Book"
+    },
+    {
+      "mesh": 0,
+      "name": "Open Book"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        0.12393000000000001,
+        0.20227000000000001,
+        0,
+        0,
+        -0.20227000000000001,
+        0.12393000000000001,
+        0,
+        0,
+        0,
+        0,
+        0.23722000000000001,
+        0,
+        1.0446500000000001,
+        0.53845999999999994,
+        0.90551999999999999,
+        1
+      ],
+      "name": "Open Book Pages.001"
+    },
+    {
+      "mesh": 1,
+      "name": "Open Book Pages.001"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        0.22971000000000005,
+        0.059230000000000012,
+        0,
+        0,
+        -0.059230000000000012,
+        0.22971000000000005,
+        0,
+        0,
+        0,
+        0,
+        0.23722000000000001,
+        0,
+        1.01031,
+        0.29188000000000008,
+        0.84230000000000005,
+        1
+      ],
+      "name": "Open Book Pages"
+    },
+    {
+      "mesh": 2,
+      "name": "Open Book Pages"
+    },
+    {
+      "children": [
+        10
+      ],
+      "matrix": [
+        0.12393000000000001,
+        0.20227000000000001,
+        0,
+        0,
+        -0.20227000000000001,
+        0.12393000000000001,
+        0,
+        0,
+        0,
+        0,
+        0.23722000000000001,
+        0,
+        1.0446500000000001,
+        0.53845999999999994,
+        0.90551999999999999,
+        1
+      ],
+      "name": "Open Book.001"
+    },
+    {
+      "mesh": 3,
+      "name": "Open Book.001"
+    },
+    {
+      "children": [
+        12
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1.0091999999999999,
+        0.53714000000000006,
+        1.4181299999999999,
+        1
+      ],
+      "name": "Point"
+    },
+    {
+      "name": "Point"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}
+
