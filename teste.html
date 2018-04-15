@@ -23,10 +23,16 @@
     });
 </script>
 
+<link rel="stylesheet" type="text/css" href="styles.css" />
+
 <body style='margin : 0px; overflow: hidden;'>
 <a-scene embedded
-         arjs='sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
+         arjs='sourceType: webcam;
+               detectionMode: mono_and_matrix;
+               matrixCodeType: 3x3;
+               debugUIEnabled: false;'
          antialias="true"
+         vr-mode-ui="enabled: false"
          outline>
 
     <a-assets>
@@ -67,5 +73,27 @@
     <a-entity camera></a-entity>
 
 </a-scene>
+
+<div class="controls">
+    <div class="role">
+        <img id="role-pic" src="res/undefined.png" class="role-pic" />
+        <label id="role-name" class="role-text">Papel</label>
+        <label id="role-time" class="role-text">1:23</label>
+    </div>
+
+    <div class="battery">
+        <div id="battery-charge" class="battery-charge">
+            <label id="battery-percent" class="battery-percent">100%</label>
+        </div>
+    </div>
+
+    <button type="button" class="info-btn">
+        <img src="res/information.png">
+    </button>
+
+    <!-- Icon made by Freepik & Good Ware from www.flaticon.com -->
+</div>
+
 </body>
+<script src="src/controls.js"></script>
 </html>

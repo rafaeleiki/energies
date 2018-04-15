@@ -1,0 +1,115 @@
+/* CSS Reset */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* END OF CSS Reset */
+
+.controls {
+    height: 60px;
+    width: 100%;
+    background-color: #4f5dff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 7.5px;
+    box-sizing: border-box;
+}
+
+.role {
+    display: inline-block;
+}
+
+.role > * {
+    vertical-align: middle;
+}
+
+.role-pic {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    background-color: #fff;
+}
+
+.role-text {
+    font-weight: bold;
+    color: #fff;
+    margin-left: 0.5em;
+}
+
+.battery {
+    border: #fff 2px solid;
+    border-radius: 0.25em;
+    width: auto;
+    display: inline-block;
+    margin: 0 1em;
+    background-color: #222;
+}
+
+.battery-charge {
+    background-color: green;
+}
+
+.battery-percent {
+    padding: 0.5em;
+    display: block;
+    font-weight: bold;
+}
+
+.info-btn {
+    height: 100%;
+    padding: 0;
+    vertical-align: middle;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.info-btn * {
+    height: 100%;
+}
