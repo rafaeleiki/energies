@@ -71,13 +71,17 @@
         <a-box position='0 0.5 0' material='color: green;'></a-box>
     </a-marker>
     <!-- handle barcode marker -->
-    <a-marker type='barcode' value='0' registerevents>
+    <a-marker type='barcode' value='0' registerevents id="cd">
         <a-entity scale="1 1 1" gltf-model="#cd-model"></a-entity>
     </a-marker>
     <!-- add a simple camera -->
     <a-entity camera></a-entity>
 
 </a-scene>
+
+<div id="text-interaction" class="text-interaction">
+    Texto teste
+</div>
 
 <div class="controls">
     <div class="role">
@@ -100,5 +104,11 @@
 </div>
 
 </body>
-<script src="src/controls.js" charset="utf-8"></script>
+<script src="src/events.js"></script>
+<script src="src/controls.js"></script>
+<script>
+    var game = new Controls();
+    var events = new Events(game);
+    game.start();
+</script>
 </html>

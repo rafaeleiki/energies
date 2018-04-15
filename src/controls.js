@@ -25,7 +25,10 @@
         this.currentRoleTime = ROLE_TIME;
         this.watch = document.getElementById('role-time');
         this.currentUserIndex = 0;
+        this.text = document.getElementById('text-interaction');
     }
+
+    window.Controls = Controls;
 
     Controls.ROLES = {
         SCIENTIST: 1,
@@ -109,8 +112,26 @@
 
         getUser: function () {
             return ROLES[this.currentUserIndex];
+        },
+
+        setText: function (text) {
+            if (text) {
+                this.text.innerText = text;
+                this.text.style.display = 'block';
+            } else {
+                this.text.style.display = 'none';
+            }
+        },
+
+        setConditionalText: function (conditions) {
+            var user = this.getUser();
+            if (conditions[user.role]) {
+                this.setText(conditions[user.role]);
+            } else if (conditions.default) {
+                this.setText(conditions.default);
+            } else {
+                this.setText();
+            }
         }
     };
-
-    new Controls().start();
 })();

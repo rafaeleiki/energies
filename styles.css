@@ -113,3 +113,16 @@ table {
 .info-btn * {
     height: 100%;
 }
+
+/* Interactions */
+.text-interaction {
+    background-color: rgba(241, 183, 255, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    padding: 1em;
+    font-size: 1.2em;
+    box-sizing: border-box;
+}
