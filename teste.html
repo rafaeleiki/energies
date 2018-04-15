@@ -1,29 +1,34 @@
-<!DOCTYPE html>
-<script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
-<script src="AR.js/aframe/build/aframe-ar.js"> </script>
+<html lang="pt">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Energias</title>
 
-<script>
-    AFRAME.registerComponent('registerevents', {
-        init: function () {
-            var marker = this.el;
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="AR.js/aframe/build/aframe-ar.js"> </script>
 
-            // Make the element emit events when found and when lost.
-            marker.setAttribute('emitevents', 'true');
+    <script>
+        AFRAME.registerComponent('registerevents', {
+            init: function () {
+                var marker = this.el;
 
-            marker.addEventListener('markerFound', function() {
-                var markerId = marker.id;
-                console.log('markerFound', markerId);
-            });
+                // Make the element emit events when found and when lost.
+                marker.setAttribute('emitevents', 'true');
 
-            marker.addEventListener('markerLost', function() {
-                var markerId = marker.id;
-                console.log('markerLost', markerId);
-            });
-        }
-    });
-</script>
+                marker.addEventListener('markerFound', function() {
+                    var markerId = marker.id;
+                    console.log('markerFound', markerId);
+                });
 
-<link rel="stylesheet" type="text/css" href="styles.css" />
+                marker.addEventListener('markerLost', function() {
+                    var markerId = marker.id;
+                    console.log('markerLost', markerId);
+                });
+            }
+        });
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
 
 <body style='margin : 0px; overflow: hidden;'>
 <a-scene embedded
@@ -91,9 +96,9 @@
         <img src="res/information.png">
     </button>
 
-    <!-- Icon made by Freepik & Good Ware from www.flaticon.com -->
+    <!-- Icon made by OCHA, Freepik & Good Ware from www.flaticon.com -->
 </div>
 
 </body>
-<script src="src/controls.js"></script>
+<script src="src/controls.js" charset="utf-8"></script>
 </html>
