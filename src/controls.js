@@ -1,6 +1,9 @@
 (function() {
     'use strict';
 
+    const SECONDS = 1000;
+    const MINUTES = 60 * SECONDS;
+
     function formatTime(min, sec) {
         if (sec < 10) {
             sec = '0' + sec;
@@ -9,7 +12,7 @@
     }
 
     /* 2 minutes */
-    const ROLE_TIME = 2 * 60 * 1000;
+    const ROLE_TIME = 2 * MINUTES;
 
     function Controls() {
         this.battery = {
@@ -21,7 +24,7 @@
             picture: document.getElementById('role-pic')
         };
         this.charge = 100;
-        this.totalTime = 0;
+        this.totalTime = 20 * MINUTES;
         this.currentRoleTime = ROLE_TIME;
         this.watch = document.getElementById('role-time');
         this.currentUserIndex = 0;
@@ -51,16 +54,44 @@
             this.battery.percent.innerText = percent + '%';
         },
 
-        /* Discharges 0.16% per second */
         discharge: function (timeInterval) {
-            this.charge -= 0.16 * timeInterval / 1000;
+
+            var dischargeMultiplier;
+            if (this.totalTime < 10 * MINUTES) {
+                dischargeMultiplier = 0.15;
+            } else if (this.totalTime < 20 * MINUTES) {
+                dischargeMultiplier = 0.22;
+            } else if (this.totalTime < 30 * MINUTES) {
+                dischargeMultiplier = 0.30;
+            } else {
+                dischargeMultiplier = 0.60;
+            }
+
+            this.charge -= dischargeMultiplier * timeInterval / SECONDS;
             this.charge = Math.max(0, this.charge);
+        },
+
+        recharge: function(timeInterval, movement) {
+            var chargeMultiplier;
+
+            if (this.totalTime < 10 * MINUTES) {
+                chargeMultiplier = 0.01;
+            } else if (this.totalTime < 20 * MINUTES) {
+                chargeMultiplier = 0.013;
+            } else if (this.totalTime < 30 * MINUTES) {
+                chargeMultiplier = 0.02;
+            } else {
+                chargeMultiplier = 0.04;
+            }
+
+            var charge = Math.abs(chargeMultiplier * movement * timeInterval / SECONDS);
+            this.charge = Math.min(100, this.charge + charge);
         },
 
         updateTime: function(timeInterval) {
             this.totalTime += timeInterval;
             this.currentRoleTime -= timeInterval;
-            var seconds = Math.floor(this.currentRoleTime / 1000);
+            var seconds = Math.floor(this.currentRoleTime / SECONDS);
             var minutes = Math.floor(seconds / 60);
             seconds -= minutes * 60;
             minutes = Math.max(0, minutes);

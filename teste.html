@@ -79,8 +79,23 @@
 
 </a-scene>
 
-<div id="text-interaction" class="text-interaction">
-    Texto teste
+<div id="text-interaction" class="text-interaction"></div>
+
+<div id="credits" class="credits">
+    <p>LCFV - protótipo 1, por Rafael Eiki</p>
+    <p>Ícones por OCHA, Freepik & Good Ware de www.flaticon.com</p>
+</div>
+
+<div class="top-controls">
+    <div class="battery">
+        <div id="battery-charge" class="battery-charge">
+            <label id="battery-percent" class="battery-percent">100%</label>
+        </div>
+    </div>
+
+    <button type="button" class="info-btn" id="credits-trigger">
+        <img src="res/information.png">
+    </button>
 </div>
 
 <div class="controls">
@@ -89,18 +104,6 @@
         <label id="role-name" class="role-text">Papel</label>
         <label id="role-time" class="role-text">1:23</label>
     </div>
-
-    <div class="battery">
-        <div id="battery-charge" class="battery-charge">
-            <label id="battery-percent" class="battery-percent">100%</label>
-        </div>
-    </div>
-
-    <button type="button" class="info-btn">
-        <img src="res/information.png">
-    </button>
-
-    <!-- Icon made by OCHA, Freepik & Good Ware from www.flaticon.com -->
 </div>
 
 </body>
@@ -110,5 +113,12 @@
     var game = new Controls();
     var events = new Events(game);
     game.start();
+
+    var showingCredits = false;
+    var credits = document.getElementById('credits');
+    document.getElementById('credits-trigger').addEventListener('click', function (ev) {
+        showingCredits = !showingCredits;
+        credits.style.display = showingCredits ? 'block' : 'none';
+    });
 </script>
 </html>

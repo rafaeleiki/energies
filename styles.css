@@ -50,6 +50,13 @@ table {
 
 /* END OF CSS Reset */
 
+.top-controls {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 0.5em;
+}
+
 .controls {
     height: 60px;
     width: 100%;
@@ -102,7 +109,7 @@ table {
 }
 
 .info-btn {
-    height: 100%;
+    height: 2.5em;
     padding: 0;
     vertical-align: middle;
     border: none;
@@ -114,15 +121,28 @@ table {
     height: 100%;
 }
 
-/* Interactions */
-.text-interaction {
-    background-color: rgba(241, 183, 255, 0.3);
+.credits {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 200px;
+    background-color: #fff;
+    height: 100%;
+    padding: 2em;
+    font-size: 1.3em;
+    line-height: 2em;
+}
+
+/* Interactions */
+.text-interaction {
+    background-color: rgba(241, 255, 255, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     padding: 1em;
     font-size: 1.2em;
     box-sizing: border-box;
+    display: none;
 }
