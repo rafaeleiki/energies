@@ -1,8 +1,5 @@
-(function() {
+window.Game.Controls = (function() {
     'use strict';
-
-    const SECONDS = 1000;
-    const MINUTES = 60 * SECONDS;
 
     function formatTime(min, sec) {
         if (sec < 10) {
@@ -10,9 +7,6 @@
         }
         return min + ":" + sec;
     }
-
-    /* 2 minutes */
-    const ROLE_TIME = 2 * MINUTES;
 
     function Controls() {
         this.battery = {
@@ -23,29 +17,13 @@
             name: document.getElementById('role-name'),
             picture: document.getElementById('role-pic')
         };
-        this.charge = 100;
-        this.totalTime = 20 * MINUTES;
-        this.currentRoleTime = ROLE_TIME;
+        this.charge = Game.INITIAL_BATTERY;
+        this.totalTime = Game.TOTAL_TIME;
+        this.currentRoleTime = Game.ROLE_TIME;
         this.watch = document.getElementById('role-time');
-        this.currentUserIndex = 0;
+        this.currentUserIndex = Game.STARTING_USER;
         this.text = document.getElementById('text-interaction');
     }
-
-    window.Controls = Controls;
-
-    Controls.ROLES = {
-        SCIENTIST: 1,
-        DEVELOPER: 2,
-        TEACHER: 3,
-        ATHLETE: 4
-    };
-
-    const ROLES = [
-        { name: 'Cientista', icon: 'res/scientist.png', role: Controls.ROLES.SCIENTIST },
-        { name: 'Programador', icon: 'res/coder.png', role: Controls.ROLES.DEVELOPER },
-        { name: 'Prof. História', icon: 'res/teacher.png', role: Controls.ROLES.TEACHER },
-        { name: 'Atleta', icon: 'res/athlete.png', role: Controls.ROLES.ATHLETE }
-    ];
 
     Controls.prototype = {
         loadBattery: function (percent) {
@@ -57,41 +35,41 @@
         discharge: function (timeInterval) {
 
             var dischargeMultiplier;
-            if (this.totalTime < 10 * MINUTES) {
+            if (this.totalTime < 10 * Game.MINUTES) {
                 dischargeMultiplier = 0.15;
-            } else if (this.totalTime < 20 * MINUTES) {
+            } else if (this.totalTime < 20 * Game.MINUTES) {
                 dischargeMultiplier = 0.22;
-            } else if (this.totalTime < 30 * MINUTES) {
+            } else if (this.totalTime < 30 * Game.MINUTES) {
                 dischargeMultiplier = 0.30;
             } else {
                 dischargeMultiplier = 0.60;
             }
 
-            this.charge -= dischargeMultiplier * timeInterval / SECONDS;
+            this.charge -= dischargeMultiplier * timeInterval / Game.SECONDS;
             this.charge = Math.max(0, this.charge);
         },
 
         recharge: function(timeInterval, movement) {
             var chargeMultiplier;
 
-            if (this.totalTime < 10 * MINUTES) {
+            if (this.totalTime < 10 * Game.MINUTES) {
                 chargeMultiplier = 0.01;
-            } else if (this.totalTime < 20 * MINUTES) {
+            } else if (this.totalTime < 20 * Game.MINUTES) {
                 chargeMultiplier = 0.013;
-            } else if (this.totalTime < 30 * MINUTES) {
+            } else if (this.totalTime < 30 * Game.MINUTES) {
                 chargeMultiplier = 0.02;
             } else {
                 chargeMultiplier = 0.04;
             }
 
-            var charge = Math.abs(chargeMultiplier * movement * timeInterval / SECONDS);
+            var charge = Math.abs(chargeMultiplier * movement * timeInterval / Game.SECONDS);
             this.charge = Math.min(100, this.charge + charge);
         },
 
         updateTime: function(timeInterval) {
             this.totalTime += timeInterval;
             this.currentRoleTime -= timeInterval;
-            var seconds = Math.floor(this.currentRoleTime / SECONDS);
+            var seconds = Math.floor(this.currentRoleTime / Game.SECONDS);
             var minutes = Math.floor(seconds / 60);
             seconds -= minutes * 60;
             minutes = Math.max(0, minutes);
@@ -104,9 +82,9 @@
             this.discharge(timeInterval);
             this.loadBattery(this.charge);
             if (this.updateTime(timeInterval)) {
-                this.currentUserIndex = (this.currentUserIndex + 1) % ROLES.length;
+                this.currentUserIndex = (this.currentUserIndex + 1) % Game.ROLES.length;
                 this.loadUser();
-                this.currentRoleTime = ROLE_TIME;
+                this.currentRoleTime = Game.ROLE_TIME;
             }
         },
 
@@ -142,7 +120,7 @@
         },
 
         getUser: function () {
-            return ROLES[this.currentUserIndex];
+            return Game.CHARACTERS[this.currentUserIndex];
         },
 
         setText: function (text) {
@@ -165,4 +143,6 @@
             }
         }
     };
+
+    return Controls;
 })();

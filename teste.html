@@ -63,20 +63,37 @@
         <a-asset-item id="pc-model" src="models/pc/scene.gltf"></a-asset-item>
     </a-assets>
 
-    <a-marker type='pattern' url='pattern-marker2.patt'>
-        <a-box position='0 0.5 0' material='color: red;'></a-box>
-    </a-marker>
-     <!--&lt;!&ndash;handle marker with hiro preset &ndash;&gt;-->
-    <a-marker preset='kanji'>
-        <a-box position='0 0.5 0' material='color: green;'></a-box>
-    </a-marker>
-    <!-- handle barcode marker -->
+    <!-- Markers -->
     <a-marker type='barcode' value='0' registerevents id="cd">
         <a-entity scale="1 1 1" gltf-model="#cd-model"></a-entity>
     </a-marker>
-    <!-- add a simple camera -->
-    <a-entity camera></a-entity>
 
+    <a-marker type='barcode' value='1' registerevents id="mirror">
+        <a-entity scale="1 1 1" gltf-model="#mirror-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='2' registerevents id="origami">
+        <a-entity scale="1 1 1" gltf-model="#origami-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='3' registerevents id="paper">
+        <a-entity scale="1 1 1" gltf-model="#paper-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='4' registerevents id="battery">
+        <a-entity scale="1 1 1" gltf-model="#battery-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='3' registerevents id="books">
+        <a-entity scale="1 1 1" gltf-model="#books-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='3' registerevents id="pc">
+        <a-entity scale="1 1 1" gltf-model="#pc-model"></a-entity>
+    </a-marker>
+
+    <!-- Camera -->
+    <a-entity camera></a-entity>
 </a-scene>
 
 <div id="text-interaction" class="text-interaction"></div>
@@ -107,11 +124,13 @@
 </div>
 
 </body>
+<script src="src/game.js"></script>
+<script src="src/strings.js"></script>
 <script src="src/events.js"></script>
 <script src="src/controls.js"></script>
 <script>
-    var game = new Controls();
-    var events = new Events(game);
+    var game = new Game.Controls();
+    var events = new Game.Events(game);
     game.start();
 
     var showingCredits = false;

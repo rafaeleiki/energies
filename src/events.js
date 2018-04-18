@@ -1,4 +1,4 @@
-(function() {
+window.Game.Events = (function() {
     'use strict';
 
     function Events(game) {
@@ -6,25 +6,25 @@
         this.addListeners();
     }
 
-    window.Events = Events;
-
     Events.prototype = {
         addListeners: function () {
-            var game = this.game;
-
             this.addGlobalListeners();
 
-            var cd = document.getElementById('cd');
+            this.createTextObject('cd');
+            this.createTextObject('mirror');
+        },
 
-            cd.addEventListener('markerFound', function () {
-                var texts = { default: 'teste' };
-                texts[Controls.ROLES.DEVELOPER] = 'teste developer';
-                game.setConditionalText(texts);
+        createTextObject: function(id) {
+            var game = this.game;
+            var object = document.getElementById(id);
+            object.addEventListener('markerLost', this.markerLost.bind(this));
+            object.addEventListener('markerFound', function () {
+                game.setConditionalText(Game.STRINGS[id]);
             });
+        },
 
-            cd.addEventListener('markerLost', function() {
-                game.setText();
-            });
+        markerLost: function () {
+          this.game.setText();
         },
 
         addGlobalListeners: function() {
@@ -36,11 +36,13 @@
                 var g = ev.accelerationIncludingGravity;
                 var acceleration = Math.abs(g.x) + Math.abs(g.y) + Math.abs(g.z) - GRAVITY;
 
+                // Only reads acceleration above minimum value
                 if (acceleration - MIN_VALUE < 0) {
                     acceleration = 0;
                 }
 
-                if (game.getUser().role === Controls.ROLES.ATHLETE) {
+                // Athlete has an energy multiplier
+                if (game.getUser().role === Game.ROLES.ATHLETE) {
                     acceleration *= 3.4;
                 }
 
@@ -48,4 +50,6 @@
             }, true);
         }
     };
+
+    return Events;
 })();
