@@ -49,7 +49,7 @@ window.Game.Controls = (function() {
             this.charge = Math.max(0, this.charge);
         },
 
-        recharge: function(timeInterval, movement) {
+        rechargeByMoving: function(timeInterval, movement) {
             var chargeMultiplier;
 
             if (this.totalTime < 10 * Game.MINUTES) {
@@ -63,7 +63,11 @@ window.Game.Controls = (function() {
             }
 
             var charge = Math.abs(chargeMultiplier * movement * timeInterval / Game.SECONDS);
-            this.charge = Math.min(100, this.charge + charge);
+            this.recharge(charge);
+        },
+
+        recharge: function(amount) {
+            this.charge = Math.min(100, this.charge + amount);
         },
 
         updateTime: function(timeInterval) {

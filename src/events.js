@@ -12,6 +12,22 @@ window.Game.Events = (function() {
 
             this.createTextObject('cd');
             this.createTextObject('mirror');
+            this.createTextObject('origami');
+            this.createTextObject('paper');
+            this.createTextObject('books');
+            this.createTextObject('pc');
+
+            var game = this.game;
+
+            var battery = document.getElementById('battery');
+            var recharged = false;
+            battery.addEventListener('markerLost', this.markerLost.bind(this));
+            battery.addEventListener('markerFound', function () {
+                if (!recharged) {
+                    recharged = true;
+                    game.recharge(50);
+                }
+            });
         },
 
         createTextObject: function(id) {
@@ -46,7 +62,7 @@ window.Game.Events = (function() {
                     acceleration *= 3.4;
                 }
 
-                game.recharge(ev.interval, acceleration);
+                game.rechargeByMoving(ev.interval, acceleration);
             }, true);
         }
     };
