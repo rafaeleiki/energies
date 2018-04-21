@@ -11,7 +11,8 @@ window.Game.Controls = (function() {
     function Controls() {
         this.battery = {
             load: document.getElementById('battery-charge'),
-            percent: document.getElementById('battery-percent')
+            percent: document.getElementById('battery-percent'),
+            chargeMark: document.getElementById('charging')
         };
         this.role = {
             name: document.getElementById('role-name'),
@@ -24,12 +25,14 @@ window.Game.Controls = (function() {
         this.currentUserIndex = Game.STARTING_USER;
         this.text = document.getElementById('text-interaction');
         this.setState(Game.STATES.CHARACTER_ROTATION);
+        this.lastCharge = this.charge;
     }
 
     Controls.prototype = {
         loadBattery: function (percent) {
             percent = percent.toFixed(0);
-            this.battery.load.style.width = percent + '%';
+            const BATTERY_ELEMENT_WIDTH = 70;
+            this.battery.load.style.width = (BATTERY_ELEMENT_WIDTH * percent / 100) + 'px';
             this.battery.percent.innerText = percent + '%';
         },
 
@@ -85,6 +88,7 @@ window.Game.Controls = (function() {
 
         gameLoop: function (timeInterval) {
             if (this.state === Game.STATES.PLAYING) {
+                this.lastCharge = this.charge;
                 this.discharge(timeInterval);
                 this.loadBattery(this.charge);
                 if (this.updateTime(timeInterval)) {
@@ -124,7 +128,9 @@ window.Game.Controls = (function() {
                 this.endGame();
             } else {
                 var now = new Date().getTime();
-                this.gameLoop(now - this.lastTime);
+                this.setIsCharging(this.charge > this.lastCharge);
+                var timeGap = now - this.lastTime;
+                this.gameLoop(timeGap * 30);
                 this.lastTime = now;
                 setTimeout(this.gameControl.bind(this));
             }
@@ -137,6 +143,10 @@ window.Game.Controls = (function() {
 
         getUser: function () {
             return Game.CHARACTERS[this.currentUserIndex];
+        },
+
+        setIsCharging: function(isCharging) {
+            this.battery.chargeMark.style.visibility = isCharging ? 'visible' : 'hidden';
         },
 
         setState: function(state) {
