@@ -24,7 +24,7 @@ window.Game = (function() {
         ROLE_TIME: 2 * MINUTES,
         INITIAL_BATTERY: 100,
         TOTAL_TIME: 0,
-        STARTING_USER: 1,
+        STARTING_USER: 0,
     };
 
     return Game;

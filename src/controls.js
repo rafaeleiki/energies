@@ -86,7 +86,7 @@ window.Game.Controls = (function() {
             this.discharge(timeInterval);
             this.loadBattery(this.charge);
             if (this.updateTime(timeInterval)) {
-                this.currentUserIndex = (this.currentUserIndex + 1) % Game.ROLES.length;
+                this.currentUserIndex = (this.currentUserIndex + 1) % Game.CHARACTERS.length;
                 this.loadUser();
                 this.currentRoleTime = Game.ROLE_TIME;
             }
