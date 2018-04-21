@@ -16,7 +16,7 @@ window.Game = (function() {
         CHARACTERS: [
             { name: 'Cientista', icon: 'res/scientist.png', role: roles.SCIENTIST },
             { name: 'Programador', icon: 'res/coder.png', role: roles.DEVELOPER },
-            { name: 'Prof. História', icon: 'res/teacher.png', role: roles.TEACHER },
+            { name: 'Professor', icon: 'res/teacher.png', role: roles.TEACHER },
             { name: 'Atleta', icon: 'res/athlete.png', role: roles.ATHLETE }
         ],
         SECONDS: SECONDS,
