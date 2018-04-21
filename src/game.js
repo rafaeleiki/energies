@@ -19,6 +19,11 @@ window.Game = (function() {
             { name: 'Professor', icon: 'res/teacher.png', role: roles.TEACHER },
             { name: 'Atleta', icon: 'res/athlete.png', role: roles.ATHLETE }
         ],
+        STATES: {
+            PLAYING: 1,
+            CHARACTER_ROTATION: 2,
+            ENDED: 3
+        },
         SECONDS: SECONDS,
         MINUTES: MINUTES,
         ROLE_TIME: 2 * MINUTES,

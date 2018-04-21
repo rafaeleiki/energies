@@ -23,6 +23,7 @@ window.Game.Controls = (function() {
         this.watch = document.getElementById('role-time');
         this.currentUserIndex = Game.STARTING_USER;
         this.text = document.getElementById('text-interaction');
+        this.setState(Game.STATES.CHARACTER_ROTATION);
     }
 
     Controls.prototype = {
@@ -83,12 +84,15 @@ window.Game.Controls = (function() {
         },
 
         gameLoop: function (timeInterval) {
-            this.discharge(timeInterval);
-            this.loadBattery(this.charge);
-            if (this.updateTime(timeInterval)) {
-                this.currentUserIndex = (this.currentUserIndex + 1) % Game.CHARACTERS.length;
-                this.loadUser();
-                this.currentRoleTime = Game.ROLE_TIME;
+            if (this.state === Game.STATES.PLAYING) {
+                this.discharge(timeInterval);
+                this.loadBattery(this.charge);
+                if (this.updateTime(timeInterval)) {
+                    this.currentUserIndex = (this.currentUserIndex + 1) % Game.CHARACTERS.length;
+                    this.loadUser();
+                    this.setState(Game.STATES.CHARACTER_ROTATION);
+                    this.currentRoleTime = Game.ROLE_TIME;
+                }
             }
         },
 
@@ -103,6 +107,13 @@ window.Game.Controls = (function() {
         },
 
         start: function () {
+            var canvas = document.querySelector('.a-canvas');
+            canvas.addEventListener('click', () => {
+               if (this.state === Game.STATES.CHARACTER_ROTATION) {
+                   this.setState(Game.STATES.PLAYING);
+               }
+            });
+
             this.loadUser();
             this.lastTime = new Date().getTime();
             setTimeout(this.gameControl.bind(this));
@@ -120,11 +131,32 @@ window.Game.Controls = (function() {
         },
 
         endGame: function () {
-            document.querySelector('.a-canvas').style.background = 'red';
+            this.state = Game.STATES.ENDED;
+
         },
 
         getUser: function () {
             return Game.CHARACTERS[this.currentUserIndex];
+        },
+
+        setState: function(state) {
+            var canvas = document.querySelector('.a-canvas');
+            this.state = state;
+
+            switch (state) {
+                case Game.STATES.PLAYING:
+                    this.setText('');
+                    canvas.style.background = '';
+                    break;
+                case Game.STATES.CHARACTER_ROTATION:
+                    canvas.style.background = 'blue';
+                    this.setText('Agora é a vez do ' + this.getUser().name + '. Toque na tela quando estiver pronto');
+                    break;
+                case Game.STATES.ENDED:
+                    canvas.style.background = 'red';
+                    this.setText('A bateria acabou!');
+                    break;
+            }
         },
 
         setText: function (text) {
