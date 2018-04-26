@@ -130,7 +130,7 @@ window.Game.Controls = (function() {
                 var now = new Date().getTime();
                 this.setIsCharging(this.charge > this.lastCharge);
                 var timeGap = now - this.lastTime;
-                this.gameLoop(timeGap * 30);
+                this.gameLoop(timeGap);
                 this.lastTime = now;
                 setTimeout(this.gameControl.bind(this));
             }
