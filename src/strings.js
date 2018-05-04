@@ -24,7 +24,12 @@ window.Game.STRINGS = (function() {
             [r.TEACHER]: '"Tente falar conversar com o moço do museu" o que será que isso significa?',
             [r.DEVELOPER]: 'Tem um esquema de como colocar dispositivos, CDs e disquetes em um computador.',
             [r.ATHLETE]: 'Alguns detalhes estão pequenos na folha, não dá para ler direito.',
-            details: 'Agora dá para ler melhor: "combinar itens diferentes pode gerar energias novas"'
+            details: {
+                default: 'Agora dá para ler melhor: "combinar itens diferentes pode gerar energias novas"',
+                [r.TEACHER]: '"Ana era muda e mulher; pra publicar sua pesquisa, colocou o nome que daria a seu filho: Rafael"',
+                [r.SCIENTIST]: 'Aqui diz que Ana era mãe de Rafael, mas pelo que eu vi o nome do neto dele também era Rafael e ainda está vivo.',
+                [r.ATHLETE]: 'Parece que Ana estudava física.'
+            }
         },
 
         battery: {

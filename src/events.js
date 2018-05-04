@@ -56,7 +56,7 @@ window.Game.Events = (function() {
 
     function paperGlasses(game, shown) {
         if (shown.has('paper') && shown.has('glasses')) {
-            game.setText(Game.STRINGS.paper.details);
+            game.setConditionalText(Game.STRINGS.paper.details);
         }
     }
 
