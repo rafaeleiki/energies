@@ -16,6 +16,14 @@ window.Game.Events = (function() {
             this.createTextObject('paper');
             this.createTextObject('books');
             this.createTextObject('pc');
+            this.createTextObject('mj');
+            this.createTextObject('cross');
+            this.createTextObject('crown');
+            this.createTextObject('glasses');
+            this.createTextObject('microphone');
+            this.createTextObject('globe');
+            this.createTextObject('pyramid');
+            this.createTextObject('pendrive');
 
             var game = this.game;
 

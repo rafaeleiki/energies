@@ -36,6 +36,44 @@ window.Game.STRINGS = (function() {
         pc: {
             default: 'Parece um computador velho',
         },
+
+        pendrive: {
+            default: 'Um pendrive comum. O que será que tem ali dentro?'
+        },
+
+        mj: {
+            default: 'Michael Jackson foi um grande artista e pessoa. Eu lembro dele em "We Are The World"...',
+            [r.ATHLETE]: 'Eu adoro escutar as músicas dele enquanto me exercito.'
+        },
+
+        cross: {
+            default: 'É um símbolo religioso. Parece conter bastante energia.',
+            [r.ATHLETE]: 'Esse tipo de energia me é familiar.',
+        },
+
+        crown: {
+            default: 'A coroa é o grande símbolo de um rei. Alguns reis não são muito bons...',
+        },
+
+        glasses: {
+            default: 'Esse parece ser um óculos bem velho.',
+        },
+
+        microphone: {
+            default: 'Um microfone comum, levemente velho.',
+            [r.TEACHER]: 'Eu uso microfone nas minhas aulas. Me ajuda quando estou sem voz.'
+        },
+
+        globe: {
+            default: 'O mundo representado em um globo',
+            [r.TEACHER]: 'Nem todo mundo acredita que o planeta é um globo.',
+            [r.SCIENTIST]: 'Antigamente, as pessoas acreditavam que o Sol que girava em torno da Terra'
+        },
+
+        pyramid: {
+            default: 'As pirâmides astecas escondiam muitos segredos e guardavam a energia dos que por lá passaram.',
+            [r.TEACHER]: 'Elas eram usadas para rituais...isso deve deixar a energia das pessoas na pirâmide.'
+        }
     };
 
     return STRINGS;
