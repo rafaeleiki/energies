@@ -20,6 +20,8 @@ window.Game.STRINGS = (function() {
 
         paper: {
             default: 'Parece que são papéis sobre o protótipo do LCFV que falam sobre a bateria. Quanto mais passa o tempo, a bateria vai se viciando e descarregando e carregando mais rápido. Depois de 30 minutos fica muito difícil de continuar usando ela.',
+            [r.TEACHER]: '"Tente falar conversar com o moço do museu" o que será que isso significa?',
+            [r.DEVELOPER]: 'Tem um esquema de como colocar dispositivos, CDs e disquetes em um computador.',
         },
 
         battery: {
@@ -38,7 +40,9 @@ window.Game.STRINGS = (function() {
         },
 
         pendrive: {
-            default: 'Um pendrive comum. O que será que tem ali dentro?'
+            default: 'Um pendrive comum. O que será que tem ali dentro?',
+            content: 'Tem várias fotos antigas de uma senhora chamada Ana. Ela parece estar feliz.',
+            cant_open: 'O pendrive parece quase encaixar no PC, mas só um técnico conseguiria ver o conteúdo.'
         },
 
         mj: {

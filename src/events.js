@@ -3,7 +3,19 @@ window.Game.Events = (function() {
 
     function Events(game) {
         this.game = game;
+        this.shown = new Set();
         this.addListeners();
+    }
+
+    function pendriveInPc(game, shown) {
+        if (shown.has('pendrive') && shown.has('pc')) {
+
+            if (game.getUser().role === Game.ROLES.DEVELOPER) {
+                game.setText(Game.STRINGS.pendrive.content);
+            } else {
+                game.setText(Game.STRINGS.pendrive.cant_open);
+            }
+        }
     }
 
     Events.prototype = {
@@ -15,7 +27,7 @@ window.Game.Events = (function() {
             this.createTextObject('origami');
             this.createTextObject('paper');
             this.createTextObject('books');
-            this.createTextObject('pc');
+            this.createTextObject('pc', pendriveInPc);
             this.createTextObject('mj');
             this.createTextObject('cross');
             this.createTextObject('crown');
@@ -23,7 +35,7 @@ window.Game.Events = (function() {
             this.createTextObject('microphone');
             this.createTextObject('globe');
             this.createTextObject('pyramid');
-            this.createTextObject('pendrive');
+            this.createTextObject('pendrive', pendriveInPc);
 
             var game = this.game;
 
@@ -41,17 +53,22 @@ window.Game.Events = (function() {
             });
         },
 
-        createTextObject: function(id) {
+        createTextObject: function(id, fnFound, fnLost) {
             var game = this.game;
+            var shown = this.shown;
             var object = document.getElementById(id);
-            object.addEventListener('markerLost', this.markerLost.bind(this));
+            object.addEventListener('markerLost', this.markerLost.bind(this, id, fnLost));
             object.addEventListener('markerFound', function () {
+                shown.add(id);
                 game.setConditionalText(Game.STRINGS[id]);
+                fnFound && fnFound(game, shown);
             });
         },
 
-        markerLost: function () {
+        markerLost: function (id, fnLost) {
           this.game.setText();
+          this.shown.delete(id);
+          fnLost && fnLost(this.game, this.shown);
         },
 
         addGlobalListeners: function() {
