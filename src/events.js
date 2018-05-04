@@ -8,7 +8,8 @@ window.Game.Events = (function() {
     }
 
     function pendriveInPc(game, shown) {
-        if (shown.has('pendrive') && shown.has('pc')) {
+        var found = shown.has('pendrive') && shown.has('pc');
+        if (found) {
 
             if (game.getUser().role === Game.ROLES.DEVELOPER) {
                 game.setText(Game.STRINGS.pendrive.content);
@@ -16,11 +17,28 @@ window.Game.Events = (function() {
                 game.setText(Game.STRINGS.pendrive.cant_open);
             }
         }
+        return found;
+    }
+
+    function pc(game, shown) {
+        if (!pendriveInPc(game, shown)) {
+            if (shown.has('pc') && shown.has('cd') &&
+                game.getUser().role === Game.ROLES.DEVELOPER) {
+
+                if (prompt('Digite a senha para abrir o CD', '').toUpperCase() === 'BCN16') {
+                    game.setText(Game.STRINGS.pc.cd);
+                } else {
+                    game.setText(Game.STRINGS.pc.password);
+                }
+            }
+        }
     }
 
     function weAreTheWorld(game, shown) {
         if (shown.has('mj') && shown.has('cd')) {
             game.setText(Game.STRINGS.mj.cd);
+        } else {
+            pc(game, shown);
         }
     }
 
@@ -42,23 +60,35 @@ window.Game.Events = (function() {
         }
     }
 
+    function origamiMic(game, shown) {
+        if (shown.has('origami') && shown.has('microphone')) {
+            game.setText(Game.STRINGS.origami.say);
+        }
+    }
+
+    function globePyramid(game, shown) {
+        if (shown.has('globe') && shown.has('pyramid')) {
+            game.setText(Game.STRINGS.globe.energies);
+        }
+    }
+
     Events.prototype = {
         addListeners: function () {
             this.addGlobalListeners();
 
             this.createTextObject('cd', weAreTheWorld);
             this.createTextObject('mirror', kingMirror);
-            this.createTextObject('origami');
+            this.createTextObject('origami', origamiMic);
             this.createTextObject('paper', paperGlasses);
             this.createTextObject('books', galileu);
-            this.createTextObject('pc', pendriveInPc);
+            this.createTextObject('pc', pc);
             this.createTextObject('mj', weAreTheWorld);
             this.createTextObject('cross', galileu);
             this.createTextObject('crown', kingMirror);
             this.createTextObject('glasses', paperGlasses);
-            this.createTextObject('microphone');
-            this.createTextObject('globe');
-            this.createTextObject('pyramid');
+            this.createTextObject('microphone', origamiMic);
+            this.createTextObject('globe', globePyramid);
+            this.createTextObject('pyramid', globePyramid);
             this.createTextObject('pendrive', pendriveInPc);
 
             var game = this.game;

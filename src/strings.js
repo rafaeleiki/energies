@@ -16,6 +16,7 @@ window.Game.STRINGS = (function() {
 
         origami: {
             default: 'O cisne representa um símbolo de harmonia no Japão. Sinto uma energia boa vindo desta dobradura de papel.',
+            say: '"Ana não falava por temer, mas agia pelo mundo" - uma mistura de energias parece estar aqui.',
         },
 
         paper: {
@@ -40,6 +41,8 @@ window.Game.STRINGS = (function() {
 
         pc: {
             default: 'Parece um computador velho',
+            cd: 'O neto de Ana guardou suas coisas sem saber que eram dela; Rafael não percebeu o que isso poderia causar.',
+            password: 'Senha incorreta. Você não lembra qual evento que você não iria esquecer?'
         },
 
         pendrive: {
@@ -68,6 +71,7 @@ window.Game.STRINGS = (function() {
 
         glasses: {
             default: 'Esse parece ser um óculos bem velho.',
+            [r.TEACHER]: 'Na lateral está escrito: "Ana, te deixo esse óculos e o pin do melhor evento da sua vida"'
         },
 
         microphone: {
@@ -78,7 +82,8 @@ window.Game.STRINGS = (function() {
         globe: {
             default: 'O mundo representado em um globo',
             [r.TEACHER]: 'Nem todo mundo acredita que o planeta é um globo.',
-            [r.SCIENTIST]: 'Antigamente, as pessoas acreditavam que o Sol que girava em torno da Terra'
+            [r.SCIENTIST]: 'Antigamente, as pessoas acreditavam que o Sol que girava em torno da Terra',
+            energies: 'Os sacrifícios feitos no mundo não pensavam nas pessoas; a empatia é tudo que nos resta.',
         },
 
         pyramid: {
