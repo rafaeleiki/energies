@@ -12,7 +12,9 @@ window.Game.Controls = (function() {
         this.battery = {
             load: document.getElementById('battery-charge'),
             percent: document.getElementById('battery-percent'),
-            chargeMark: document.getElementById('charging')
+            chargeMark: document.getElementById('charging'),
+            supercharge: false,
+            superchargeCount: 30 * Game.SECONDS,
         };
         this.role = {
             name: document.getElementById('role-name'),
@@ -29,6 +31,14 @@ window.Game.Controls = (function() {
     }
 
     Controls.prototype = {
+        setSupercharge: function (supercharge) {
+            this.battery.supercharge = supercharge;
+        },
+
+        isSupercharging: function () {
+            return this.battery.supercharge && this.battery.superchargeCount > 0;
+        },
+
         loadBattery: function (percent) {
             percent = percent.toFixed(0);
             const BATTERY_ELEMENT_WIDTH = 70;
@@ -38,15 +48,20 @@ window.Game.Controls = (function() {
 
         discharge: function (timeInterval) {
 
-            var dischargeMultiplier;
-            if (this.totalTime < 10 * Game.MINUTES) {
-                dischargeMultiplier = 0.15;
-            } else if (this.totalTime < 20 * Game.MINUTES) {
-                dischargeMultiplier = 0.22;
-            } else if (this.totalTime < 30 * Game.MINUTES) {
-                dischargeMultiplier = 0.30;
+            if (this.isSupercharging()) {
+                dischargeMultiplier = -1.8;
+                this.battery.superchargeCount -= timeInterval;
             } else {
-                dischargeMultiplier = 0.60;
+                var dischargeMultiplier;
+                if (this.totalTime < 10 * Game.MINUTES) {
+                    dischargeMultiplier = 0.15;
+                } else if (this.totalTime < 20 * Game.MINUTES) {
+                    dischargeMultiplier = 0.22;
+                } else if (this.totalTime < 30 * Game.MINUTES) {
+                    dischargeMultiplier = 0.30;
+                } else {
+                    dischargeMultiplier = 0.60;
+                }
             }
 
             this.charge -= dischargeMultiplier * timeInterval / Game.SECONDS;

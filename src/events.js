@@ -20,12 +20,15 @@ window.Game.Events = (function() {
             var game = this.game;
 
             var battery = document.getElementById('battery');
-            var recharged = false;
-            battery.addEventListener('markerLost', this.markerLost.bind(this));
+            battery.addEventListener('markerLost', function() {
+                game.setSupercharge(false);
+            });
             battery.addEventListener('markerFound', function () {
-                if (!recharged) {
-                    recharged = true;
-                    game.recharge(50);
+                game.setSupercharge(true);
+                if (game.isSupercharging()) {
+                    game.setText(Game.STRINGS.battery.charging);
+                } else {
+                    game.setText(Game.STRINGS.battery.charged);
                 }
             });
         },

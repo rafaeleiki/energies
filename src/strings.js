@@ -23,7 +23,8 @@ window.Game.STRINGS = (function() {
         },
 
         battery: {
-            default: 'Uma bateria extra! Com isso recarregou 50% da bateria.',
+            charging: 'Uma bateria extra! Isso parece recarregar o dispositivo',
+            charged: 'Parece que acabou a energia dessa bateria'
         },
 
         books: {
