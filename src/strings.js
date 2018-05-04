@@ -22,6 +22,8 @@ window.Game.STRINGS = (function() {
             default: 'Parece que são papéis sobre o protótipo do LCFV que falam sobre a bateria. Quanto mais passa o tempo, a bateria vai se viciando e descarregando e carregando mais rápido. Depois de 30 minutos fica muito difícil de continuar usando ela.',
             [r.TEACHER]: '"Tente falar conversar com o moço do museu" o que será que isso significa?',
             [r.DEVELOPER]: 'Tem um esquema de como colocar dispositivos, CDs e disquetes em um computador.',
+            [r.ATHLETE]: 'Alguns detalhes estão pequenos na folha, não dá para ler direito.',
+            details: 'Agora dá para ler melhor: "combinar itens diferentes pode gerar energias novas"'
         },
 
         battery: {
@@ -32,7 +34,8 @@ window.Game.STRINGS = (function() {
         books: {
             default: '"Diálogo Sobre os Dois Máximos Sistemas do Mundo Ptolomaico e Coperniano", de Galileu Galilei.',
             [r.TEACHER]: 'Galileu foi um grande físico que foi calado por muitos anos porque seu pensamento ia contra o da Igreja.',
-            [r.SCIENTIST]: 'Todos esses itens históricos...será que tem alguma relação com o estado das pessoas que viveram com eles?'
+            [r.SCIENTIST]: 'Todos esses itens históricos...será que tem alguma relação com o estado das pessoas que viveram com eles?',
+            galileu: 'Se as palavras também tem energia...o que não foi dito guarda energia? Com esses dois juntos parece que a energia está intensa'
         },
 
         pc: {
@@ -47,7 +50,10 @@ window.Game.STRINGS = (function() {
 
         mj: {
             default: 'Michael Jackson foi um grande artista e pessoa. Eu lembro dele em "We Are The World"...',
-            [r.ATHLETE]: 'Eu adoro escutar as músicas dele enquanto me exercito.'
+            [r.ATHLETE]: 'Eu adoro escutar as músicas dele enquanto me exercito.',
+            cd: '"We are the world, we are the children\n' +
+                'We are the ones who make a brighter day\n' +
+                'So let\'s start giving" - uma energia boa emanou.'
         },
 
         cross: {
@@ -57,6 +63,7 @@ window.Game.STRINGS = (function() {
 
         crown: {
             default: 'A coroa é o grande símbolo de um rei. Alguns reis não são muito bons...',
+            king: '"Os reis que calam seus súditos são por ele calados; aqueles que não falam geram energia"',
         },
 
         glasses: {

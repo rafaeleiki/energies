@@ -18,20 +18,44 @@ window.Game.Events = (function() {
         }
     }
 
+    function weAreTheWorld(game, shown) {
+        if (shown.has('mj') && shown.has('cd')) {
+            game.setText(Game.STRINGS.mj.cd);
+        }
+    }
+
+    function galileu(game, shown) {
+        if (shown.has('books') && shown.has('cross')) {
+            game.setText(Game.STRINGS.books.galileu);
+        }
+    }
+
+    function kingMirror(game, shown) {
+        if (shown.has('crown') && shown.has('mirror')) {
+            game.setText(Game.STRINGS.crown.king);
+        }
+    }
+
+    function paperGlasses(game, shown) {
+        if (shown.has('paper') && shown.has('glasses')) {
+            game.setText(Game.STRINGS.paper.details);
+        }
+    }
+
     Events.prototype = {
         addListeners: function () {
             this.addGlobalListeners();
 
-            this.createTextObject('cd');
-            this.createTextObject('mirror');
+            this.createTextObject('cd', weAreTheWorld);
+            this.createTextObject('mirror', kingMirror);
             this.createTextObject('origami');
-            this.createTextObject('paper');
-            this.createTextObject('books');
+            this.createTextObject('paper', paperGlasses);
+            this.createTextObject('books', galileu);
             this.createTextObject('pc', pendriveInPc);
-            this.createTextObject('mj');
-            this.createTextObject('cross');
-            this.createTextObject('crown');
-            this.createTextObject('glasses');
+            this.createTextObject('mj', weAreTheWorld);
+            this.createTextObject('cross', galileu);
+            this.createTextObject('crown', kingMirror);
+            this.createTextObject('glasses', paperGlasses);
             this.createTextObject('microphone');
             this.createTextObject('globe');
             this.createTextObject('pyramid');
