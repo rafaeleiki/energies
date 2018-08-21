@@ -1,0 +1,211 @@
+<html lang="pt">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Energias</title>
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="../../lib/aframe-ar.min.js"> </script>
+
+    <script>
+        AFRAME.registerComponent('registerevents', {
+            init: function () {
+                var marker = this.el;
+
+                // Make the element emit events when found and when lost.
+                marker.setAttribute('emitevents', 'true');
+
+                marker.addEventListener('markerFound', function() {
+                    var markerId = marker.id;
+                    console.log('markerFound', markerId);
+                });
+
+                marker.addEventListener('markerLost', function() {
+                    var markerId = marker.id;
+                    console.log('markerLost', markerId);
+                });
+            }
+        });
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+<a-scene embedded
+         arjs='sourceType: webcam;
+               detectionMode: mono_and_matrix;
+               matrixCodeType: 4x4;
+               maxDetectionRate: 10;
+               debugUIEnabled: false;'
+         antialias="true"
+         vr-mode-ui="enabled: false"
+         outline>
+
+    <a-assets>
+        <!-- https://sketchfab.com/models/800d08c54f484d078a50b0ed336bb8aa# -->
+        <a-asset-item id="cd-model" src="../../models/cd/scene.gltf"></a-asset-item>
+
+        <!--https://sketchfab.com/models/1e9485b86173477db6b7a8b78be49b65#-->
+        <a-asset-item id="mirror-model" src="../../models/viking_mirror/scene.gltf"></a-asset-item>
+
+        <!--https://sketchfab.com/models/38fe6bfec0664af3b7660b2d18cfaf94#-->
+        <a-asset-item id="origami-model" src="../../models/origami/scene.gltf"></a-asset-item>
+
+        <!--https://sketchfab.com/models/ab207b36aeb142eabafe53f1e15caf94#-->
+        <a-asset-item id="paper-model" src="../../models/paper_text/scene.gltf"></a-asset-item>
+
+        <!--https://sketchfab.com/models/4cab1d1dfcb54ab79230a0a8d44a087e#-->
+        <a-asset-item id="battery-model" src="../../models/battery/scene.gltf"></a-asset-item>
+
+        <!--https://sketchfab.com/models/cbd8cc04489d41b08c1416c3425cfaf5#-->
+        <a-asset-item id="books-model" src="../../models/books/scene.gltf"></a-asset-item>
+
+        <!--https://sketchfab.com/models/0b094e28e7cf4997b2fc7aec1df0d76f#-->
+        <a-asset-item id="pc-model" src="../../models/pc/scene.gltf"></a-asset-item>
+
+        <!--https://sketchfab.com/models/5f044054b64244f4922a5370e384a98a# -->
+        <a-asset-item id="mj-model" src="../../models/michael_jackson/scene.gltf"></a-asset-item>
+
+        <!-- https://sketchfab.com/models/8d3133d1d18c4f0fab3a226ecc2e69e1# -->
+        <a-asset-item id="cross-model" src="../../models/cross/scene.gltf"></a-asset-item>
+
+        <!-- https://sketchfab.com/models/22a8606de16345729947b7ec10c655d4# -->
+        <a-asset-item id="crown-model" src="../../models/crown/scene.gltf"></a-asset-item>
+
+        <!-- https://sketchfab.com/models/9af2757e8c884720a23e425805b138dd# -->
+        <a-asset-item id="glasses-model" src="../../models/glasses/scene.gltf"></a-asset-item>
+
+        <!-- https://sketchfab.com/models/674959decc084dc092b67fd3cb5193f3# -->
+        <a-asset-item id="microphone-model" src="../../models/microphone/scene.gltf"></a-asset-item>
+
+        <!-- https://sketchfab.com/models/fc826142a5544fa8a1f97589f4067de3# -->
+        <a-asset-item id="globe-model" src="../../models/globe/scene.gltf"></a-asset-item>
+
+        <!-- https://sketchfab.com/models/e1e932f4684a47afaea3a387b654c539# -->
+        <a-asset-item id="pyramid-model" src="../../models/pyramid/scene.gltf"></a-asset-item>
+
+        <a-asset-item id="pendrive-model" src="../../models/pendrive/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <!-- Markers -->
+    <a-marker type='barcode' value='16' registerevents id="cd">
+        <a-entity scale="1.5 1.5 1.5" gltf-model="#cd-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='1' registerevents id="mirror">
+        <a-entity scale="1 1 1" gltf-model="#mirror-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='20' registerevents id="origami">
+        <a-entity scale="1 1 1" gltf-model="#origami-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='15' registerevents id="paper">
+        <a-entity scale="8 8 8" gltf-model="#paper-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='4' registerevents id="battery">
+        <a-entity scale="0.1 0.1 0.1" gltf-model="#battery-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='19' registerevents id="books">
+        <a-entity scale="1 1 1" gltf-model="#books-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='6' registerevents id="pc">
+        <a-entity scale="1 1 1" gltf-model="#pc-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='8' registerevents id="mj">
+        <a-entity scale="0.01 0.01 0.01" gltf-model="#mj-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='5' registerevents id="cross">
+        <a-entity scale="0.3 0.3 0.3" gltf-model="#cross-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='13' registerevents id="crown">
+        <a-entity scale="1 1 1" gltf-model="#crown-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='0' registerevents id="glasses">
+        <a-entity scale="0.01 0.01 0.01" gltf-model="#glasses-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='3' registerevents id="microphone">
+        <a-entity scale="1 1 1" gltf-model="#microphone-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='2' registerevents id="globe">
+        <a-entity scale="0.1 0.1 0.1" gltf-model="#globe-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='18' registerevents id="pyramid">
+        <a-entity scale="0.2 0.2 0.2" gltf-model="#pyramid-model"></a-entity>
+    </a-marker>
+
+    <a-marker type='barcode' value='14' registerevents id="pendrive">
+        <a-entity scale="0.4 0.4 0.4" gltf-model="#pendrive-model"></a-entity>
+    </a-marker>
+
+    <!-- Camera -->
+    <a-entity camera></a-entity>
+</a-scene>
+
+<div id="text-interaction" class="text-interaction"></div>
+
+<div id="credits" class="credits">
+    <p>LCFV - protótipo 1, por Rafael Eiki</p>
+    <p>Ícones por OCHA, Freepik & Good Ware de www.flaticon.com</p>
+    <p>
+        Modelos 3D por: kathiastaff, darvon, JuanG3D, 3DP.D., zhixson,
+        symbols, Nick Havas, artministry.
+    </p>
+</div>
+
+<div class="top-controls">
+    <button type="button" class="info-btn" id="credits-trigger">
+        <img src="res/information.png">
+    </button>
+</div>
+
+<div class="controls">
+    <div class="role">
+        <img id="role-pic" src="res/undefined.png" class="role-pic" />
+        <label id="role-name" class="role-text">Papel</label>
+        <label id="role-time" class="role-text">2:00</label>
+    </div>
+
+    <div class="battery">
+        <div id="battery-charge" class="battery-charge">
+        </div>
+        <div class="battery-info">
+            <span id="charging" class="battery-percent charging">⚡</span>
+            <label id="battery-percent" class="battery-percent">100%</label>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="src/game.js"></script>
+<script src="src/strings.js"></script>
+<script src="src/events.js"></script>
+<script src="src/controls.js"></script>
+<script>
+    var game = new Game.Controls();
+    var events = new Game.Events(game);
+    game.start();
+
+    var showingCredits = false;
+    var credits = document.getElementById('credits');
+    document.getElementById('credits-trigger').addEventListener('click', function (ev) {
+        showingCredits = !showingCredits;
+        credits.style.display = showingCredits ? 'block' : 'none';
+    });
+</script>
+</html>
