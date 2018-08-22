@@ -72,13 +72,13 @@ window.Game.Controls = (function() {
             var chargeMultiplier;
 
             if (this.totalTime < 10 * Game.MINUTES) {
-                chargeMultiplier = 0.01;
+                chargeMultiplier = 0.0005;
             } else if (this.totalTime < 20 * Game.MINUTES) {
-                chargeMultiplier = 0.013;
+                chargeMultiplier = 0.0006;
             } else if (this.totalTime < 30 * Game.MINUTES) {
-                chargeMultiplier = 0.02;
+                chargeMultiplier = 0.001;
             } else {
-                chargeMultiplier = 0.04;
+                chargeMultiplier = 0.002;
             }
 
             var charge = Math.abs(chargeMultiplier * movement * timeInterval / Game.SECONDS);

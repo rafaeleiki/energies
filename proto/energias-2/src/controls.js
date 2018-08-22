@@ -192,6 +192,40 @@ window.Game.Controls = (function() {
             window.speechSynthesis.speak(this.speech.text);
         },
 
+        isObjectReadable(z, minZ, maxZ) {
+            return minZ <= z && z <= maxZ;
+        },
+
+        checkObjectDistance: function (z, minZ, maxZ) {
+            let readable = this.isObjectReadable(z, minZ, maxZ);
+            if (readable) {
+                window.navigator.vibrate(0);
+            } else {
+                const range = maxZ - minZ;
+                let dist;
+
+                if (z < minZ) {
+                    dist = Math.abs(minZ - z);
+                } else {
+                    dist = Math.abs(z - maxZ);
+                }
+
+                let proximity = Math.floor(dist / range);
+                let vibrationPeriod = 0;
+                switch (proximity) {
+                    case 0: vibrationPeriod = 200; break;
+                    case 1: vibrationPeriod = 300; break;
+                    case 2: vibrationPeriod = 400; break;
+                    case 3: vibrationPeriod = 800; break;
+                    case 4: vibrationPeriod = 1500; break;
+                    case 5: vibrationPeriod = 2000; break;
+                    case 6: vibrationPeriod = 3000; break;
+                }
+                window.navigator.vibrate(vibrationPeriod);
+            }
+            return readable;
+        },
+
         gameControl: function () {
             if (this.isOver()) {
                 this.endGame();

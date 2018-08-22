@@ -108,14 +108,33 @@ window.Game.Events = (function() {
         },
 
         createTextObject: function(id, fnFound, fnLost) {
-            var game = this.game;
-            var shown = this.shown;
-            var object = document.getElementById(id);
-            object.addEventListener('markerLost', this.markerLost.bind(this, id, fnLost));
+            let game = this.game;
+            let shown = this.shown;
+            let object = document.getElementById(id);
+            let showing = false;
+
+            function tryFind() {
+                if (showing) {
+                    let zPosition = object.object3D.position.z;
+                    let values = Game.STRINGS[id];
+                    if (game.isObjectReadable(zPosition, values.minZ, values.maxZ)) {
+                        shown.add(id);
+                        game.setConditionalText(Game.STRINGS[id]);
+                        fnFound && fnFound(game, shown);
+                        showing = false;
+                    }
+                    setTimeout(tryFind, 100);
+                }
+            }
+
+            object.addEventListener('markerLost', () => {
+                showing = false;
+                this.markerLost.bind(this, id, fnLost);
+            });
+
             object.addEventListener('markerFound', function () {
-                shown.add(id);
-                game.setConditionalText(Game.STRINGS[id]);
-                fnFound && fnFound(game, shown);
+                showing = true;
+                tryFind();
             });
         },
 
