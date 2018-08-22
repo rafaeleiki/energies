@@ -1,4 +1,4 @@
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Energias</title>
@@ -190,14 +190,6 @@
     window.game = new Game.Controls();
     var events = new Game.Events(window.game);
     window.game.start();
-
-    navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: "user" } })
-        .then(function(stream) {
-
-        })
-        .catch(function(err) {
-
-        });
 
     // setInterval(function() {
     //     var b = document.querySelector('#books');

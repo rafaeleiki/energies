@@ -28,7 +28,9 @@ window.Game.Controls = (function() {
         this.watch = document.getElementById('role-time');
         this.currentUserIndex = Game.STARTING_USER;
         this.text = document.getElementById('text-interaction');
-        this.setState(Game.STATES.CHARACTER_ROTATION);
+        this.speech = {
+            text: new SpeechSynthesisUtterance()
+        };
         this.lastCharge = this.charge;
     }
 
@@ -65,7 +67,7 @@ window.Game.Controls = (function() {
                 dischargeMultiplier = -1.8;
                 this.battery.superchargeCount -= timeInterval;
             } else {
-                var dischargeMultiplier;
+                let dischargeMultiplier;
                 if (this.totalTime < 10 * Game.MINUTES) {
                     dischargeMultiplier = 0.09;
                 } else if (this.totalTime < 15 * Game.MINUTES) {
@@ -86,7 +88,7 @@ window.Game.Controls = (function() {
         },
 
         rechargeByMoving: function(timeInterval, movement) {
-            var chargeMultiplier;
+            let chargeMultiplier;
 
             if (this.totalTime < 10 * Game.MINUTES) {
                 chargeMultiplier = 0.01;
@@ -98,7 +100,7 @@ window.Game.Controls = (function() {
                 chargeMultiplier = 0.04;
             }
 
-            var charge = Math.abs(chargeMultiplier * movement * timeInterval / Game.SECONDS);
+            let charge = Math.abs(chargeMultiplier * movement * timeInterval / Game.SECONDS);
             this.recharge(charge);
         },
 
@@ -143,16 +145,47 @@ window.Game.Controls = (function() {
         },
 
         start: function () {
+            this.prepareSpeech();
+        },
+
+        prepareState: function() {
             var canvas = document.querySelector('.a-canvas');
             canvas.addEventListener('click', () => {
-               if (this.state === Game.STATES.CHARACTER_ROTATION) {
-                   this.setState(Game.STATES.PLAYING);
-               }
+                if (this.state === Game.STATES.CHARACTER_ROTATION) {
+                    this.setState(Game.STATES.PLAYING);
+                }
             });
 
             this.loadUser();
             this.lastTime = new Date().getTime();
+
+            this.setState(Game.STATES.CHARACTER_ROTATION);
             setTimeout(this.gameControl.bind(this));
+        },
+
+        prepareSpeech: function() {
+            var speech = this.speech;
+            var that = this;
+
+            window.speechSynthesis.onvoiceschanged = function() {
+                var voices = window.speechSynthesis.getVoices();
+                voices.forEach(function (voice) {
+                    if (voice.lang === 'pt-BR') {
+                        speech.text.voice = voice;
+                        speech.text.voiceURI = voice.voiceURI;
+                        speech.text.lang = voice.lang;
+                        speech.text.localService = true;
+                        speech.ready = true;
+                    }
+                });
+
+                that.prepareState();
+            };
+        },
+
+        startSpeaking: function(content) {
+            this.speech.text.text = content;
+            window.speechSynthesis.speak(this.speech.text);
         },
 
         gameControl: function () {
@@ -181,22 +214,24 @@ window.Game.Controls = (function() {
         },
 
         setState: function(state) {
-            var canvas = document.querySelector('.a-canvas');
-            this.state = state;
+            if (state !== this.state) {
+                let canvas = document.querySelector('.a-canvas');
+                this.state = state;
 
-            switch (state) {
-                case Game.STATES.PLAYING:
-                    this.setText('');
-                    canvas.style.background = '';
-                    break;
-                case Game.STATES.CHARACTER_ROTATION:
-                    canvas.style.background = 'blue';
-                    this.setText('Agora é a vez do ' + this.getUser().name + '. Toque na tela quando estiver pronto');
-                    break;
-                case Game.STATES.ENDED:
-                    canvas.style.background = 'red';
-                    this.setText('A bateria acabou!');
-                    break;
+                switch (state) {
+                    case Game.STATES.PLAYING:
+                        this.setText('');
+                        canvas.style.background = '';
+                        break;
+                    case Game.STATES.CHARACTER_ROTATION:
+                        canvas.style.background = 'blue';
+                        this.setText('Agora é a vez do ' + this.getUser().name + '. Toque na tela quando estiver pronto');
+                        break;
+                    case Game.STATES.ENDED:
+                        canvas.style.background = 'red';
+                        this.setText('A bateria acabou!');
+                        break;
+                }
             }
         },
 
@@ -204,13 +239,14 @@ window.Game.Controls = (function() {
             if (text) {
                 this.text.innerText = text;
                 this.text.style.display = 'block';
+                this.startSpeaking(text);
             } else {
                 this.text.style.display = 'none';
             }
         },
 
         setConditionalText: function (conditions) {
-            var user = this.getUser();
+            let user = this.getUser();
             if (conditions[user.role]) {
                 this.setText(conditions[user.role]);
             } else if (conditions.default) {

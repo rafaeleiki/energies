@@ -137,6 +137,8 @@ window.Game.Events = (function() {
                 // Only reads acceleration above minimum value
                 if (acceleration - MIN_VALUE < 0) {
                     acceleration = 0;
+                } else {
+                    acceleration /= 10;
                 }
 
                 // Athlete has an energy multiplier
