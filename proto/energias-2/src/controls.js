@@ -29,7 +29,8 @@ window.Game.Controls = (function() {
         this.currentUserIndex = Game.STARTING_USER;
         this.text = document.getElementById('text-interaction');
         this.speech = {
-            text: new SpeechSynthesisUtterance()
+            text: new SpeechSynthesisUtterance(),
+            ready: false
         };
         this.lastCharge = this.charge;
     }
@@ -63,11 +64,12 @@ window.Game.Controls = (function() {
 
         discharge: function (timeInterval) {
 
+            let dischargeMultiplier;
+
             if (this.isSupercharging()) {
                 dischargeMultiplier = -1.8;
                 this.battery.superchargeCount -= timeInterval;
             } else {
-                let dischargeMultiplier;
                 if (this.totalTime < 10 * Game.MINUTES) {
                     dischargeMultiplier = 0.09;
                 } else if (this.totalTime < 15 * Game.MINUTES) {
@@ -175,11 +177,13 @@ window.Game.Controls = (function() {
                         speech.text.voiceURI = voice.voiceURI;
                         speech.text.lang = voice.lang;
                         speech.text.localService = true;
-                        speech.ready = true;
+
+                        if (!speech.ready) {
+                            speech.ready = true;
+                            that.prepareState();
+                        }
                     }
                 });
-
-                that.prepareState();
             };
         },
 
