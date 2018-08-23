@@ -48,8 +48,12 @@
 
         recognition.onresult = function(event) {
             let text = event.results[0][0].transcript;
-            speech.text = text;
-            window.speechSynthesis.speak(speech);
+            let intention = window.findIntention(text);
+
+            if (intention) {
+                speech.text = intention.text;
+                window.speechSynthesis.speak(speech);
+            }
         };
 
         setInterval(() => {
