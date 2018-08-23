@@ -1,0 +1,48 @@
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    background: #000 url('closed_mouth.gif');
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.container.speaking {
+    background-image: url('mouth.gif');
+}
+
+.word {
+    color: red;
+    font-size: 1.5em;
+    position: absolute;
+    transform: translateX(100%);
+    width: 100%;
+    top: 50px;
+    animation: moveWord 10s linear;
+}
+
+.word.level-1 {
+    font-size: 8em;
+    font-weight: bold;
+}
+
+.word.level-2 {
+    font-size: 4em;
+}
+
+@keyframes moveWord {
+    0% { transform: translateX(100%) }
+    100% { transform: translateX(-100%) }
+}
+
+@-webkit-keyframes moveWord {
+    0% { transform: translateX(100%) }
+    100% { transform: translateX(-100%) }
+}
