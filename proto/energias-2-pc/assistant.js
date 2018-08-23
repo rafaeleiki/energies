@@ -6,7 +6,6 @@
     let recognition = new SpeechRecognition();
     let container = document.getElementById('container');
     let speaking = false;
-    let text = '';
 
     function prepareSpeech() {
         findVoice('BR');
@@ -47,8 +46,9 @@
         recognition.maxAlternatives = 1;
 
         recognition.onresult = function(event) {
-            let text = event.results[0][0].transcript;
-            let intention = window.findIntention(text);
+            let text = event.results[0][0].transcript.toLowerCase();
+            let intention = window.Intention.find(text);
+            putText(text);
 
             if (intention) {
                 speech.text = intention.text;
@@ -65,6 +65,28 @@
         }, 500);
 
         recognition.start();
+    }
+
+    function putText(text) {
+        let wordList = Array.from(new Set(text.split(' ')));
+        wordList.forEach((word) => {
+            let level = window.Intention.getLevel(word);
+            let height = Math.random() * 90;
+
+            let label = document.createElement('label');
+            label.className = `word level-${level}`;
+            label.innerText = word;
+            label.style.top = height + "%";
+
+            label.addEventListener("webkitAnimationEnd", animationEnd);
+            label.addEventListener("animationend", animationEnd);
+
+            function animationEnd() {
+                document.body.removeChild(label);
+            }
+
+            setTimeout(() => document.body.appendChild(label), Math.random() * 4000);
+        });
     }
 
     function start() {

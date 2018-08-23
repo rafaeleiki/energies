@@ -1,6 +1,6 @@
-window.findIntention = (function() {
+window.Intention = (function() {
 
-    let intentions = [
+    const intentions = [
         {
             text: 'A luva transforma movimento em energia',
             triggers: [
@@ -17,7 +17,8 @@ window.findIntention = (function() {
                 ['como', 'pega', 'objeto'],
                 ['código', 'objeto'],
                 ['vibrou', 'perto'],
-                ['perto', 'luva']
+                ['perto', 'luva'],
+                ['luva', 'vibrando']
             ]
         },
         {
@@ -26,18 +27,27 @@ window.findIntention = (function() {
                 ['duvida', 'cientista'],
                 ['dúvida', 'cientista'],
                 ['informações', 'cientista'],
-                ['cientista', 'informações']
+                ['informação', 'cientista'],
+                ['cientista', 'faz']
             ]
         },
         {
             text: 'Quem é a Ana?',
             triggers: [
                 ['ana'],
-                ['Ana'],
                 ['história', 'velha'],
-                ['senhora']
+                ['senhora'],
+                ['senhorinha']
             ]
         }
+    ];
+
+    const relatedWords = [
+        'bateria',
+        'carregar',
+        'senhora',
+        'cientista',
+        'energia'
     ];
 
     function findIntention(text) {
@@ -57,20 +67,41 @@ window.findIntention = (function() {
     }
 
     function isTriggered(text, trigger) {
-        let index = 0;
         let possible = true;
-
         for (let i = 0; possible && i < trigger.length; i++) {
-            let newIndex = text.indexOf(trigger[i], index);
-            if (newIndex >= 0) {
-                index = newIndex;
-            } else {
+            if (text.indexOf(trigger[i]) < 0) {
                 possible = false;
             }
         }
-
         return possible;
     }
 
-    return findIntention;
+    function wordLevel(word) {
+        let level = 0;
+
+        if (isRelated(word)) {
+            level = 2;
+        } else if (isTrigger(word)) {
+            level = 1;
+        }
+
+        return level;
+    }
+
+    function isTrigger(word) {
+        return intentions.some((intention) => {
+            return intention.triggers.some((trigger) => {
+                return trigger.indexOf(word) >= 0;
+            })
+        })
+    }
+
+    function isRelated(word) {
+        return relatedWords.indexOf(word) >= 0;
+    }
+
+    return {
+        find: findIntention,
+        getLevel: wordLevel,
+    };
 })();
