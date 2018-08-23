@@ -112,16 +112,19 @@ window.Game.Events = (function() {
             let shown = this.shown;
             let object = document.getElementById(id);
             let showing = false;
+            let speak = false;
 
             function tryFind() {
                 if (showing) {
                     let zPosition = object.object3D.position.z;
                     let values = Game.STRINGS[id];
-                    if (game.isObjectReadable(zPosition, values.minZ, values.maxZ)) {
-                        shown.add(id);
-                        game.setConditionalText(Game.STRINGS[id]);
-                        fnFound && fnFound(game, shown);
-                        showing = false;
+                    if (game.checkObjectDistance(zPosition, values.minZ, values.maxZ)) {
+                        if (speak) {
+                            shown.add(id);
+                            game.setConditionalText(Game.STRINGS[id]);
+                            fnFound && fnFound(game, shown);
+                            speak = false;
+                        }
                     }
                     setTimeout(tryFind, 100);
                 }
@@ -129,11 +132,14 @@ window.Game.Events = (function() {
 
             object.addEventListener('markerLost', () => {
                 showing = false;
+                speak = false;
+                game.stopVibration();
                 this.markerLost.bind(this, id, fnLost);
             });
 
             object.addEventListener('markerFound', function () {
                 showing = true;
+                speak = true;
                 tryFind();
             });
         },

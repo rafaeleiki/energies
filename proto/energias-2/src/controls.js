@@ -2,6 +2,7 @@ window.Game.Controls = (function() {
     'use strict';
 
     const TIME_MULTIPLIER = 1;
+    const MIN_VIBRATION_LEVEL = 10;
 
     function formatTime(min, sec) {
         if (sec < 10) {
@@ -33,6 +34,10 @@ window.Game.Controls = (function() {
             ready: false
         };
         this.lastCharge = this.charge;
+        this.vibration = {
+            period: 0,
+            level: MIN_VIBRATION_LEVEL + 1,
+        };
     }
 
     Controls.prototype = {
@@ -148,9 +153,6 @@ window.Game.Controls = (function() {
 
         start: function () {
             this.prepareSpeech();
-        },
-
-        prepareState: function() {
             var canvas = document.querySelector('.a-canvas');
             canvas.addEventListener('click', () => {
                 if (this.state === Game.STATES.CHARACTER_ROTATION) {
@@ -160,36 +162,41 @@ window.Game.Controls = (function() {
 
             this.loadUser();
             this.lastTime = new Date().getTime();
+            this.prepareVibration();
 
             this.setState(Game.STATES.CHARACTER_ROTATION);
             setTimeout(this.gameControl.bind(this));
         },
 
         prepareSpeech: function() {
-            var speech = this.speech;
             var that = this;
+            this.findVoice('BR');
 
-            window.speechSynthesis.onvoiceschanged = function() {
-                var voices = window.speechSynthesis.getVoices();
-                voices.forEach(function (voice) {
-                    if (voice.lang === 'pt-BR') {
-                        speech.text.voice = voice;
-                        speech.text.voiceURI = voice.voiceURI;
-                        speech.text.lang = voice.lang;
-                        speech.text.localService = true;
-
-                        if (!speech.ready) {
-                            speech.ready = true;
-                            that.prepareState();
-                        }
-                    }
-                });
+            window.speechSynthesis.onvoiceschanged = () => {
+                that.findVoice('BR');
             };
         },
 
+        findVoice: function(language) {
+            var speech = this.speech;
+            var voices = window.speechSynthesis.getVoices();
+
+            voices.forEach(function (voice) {
+                if (voice.lang.indexOf(language) > 0) {
+                    speech.text.voice = voice;
+                    speech.text.voiceURI = voice.voiceURI;
+                    speech.text.lang = voice.lang;
+                    speech.text.localService = true;
+                }
+            });
+        },
+
         startSpeaking: function(content) {
-            this.speech.text.text = content;
-            window.speechSynthesis.speak(this.speech.text);
+            const synth = window.speechSynthesis;
+            if (content !== this.speech.text.text || !synth.speaking) {
+                this.speech.text.text = content;
+                synth.speak(this.speech.text);
+            }
         },
 
         isObjectReadable(z, minZ, maxZ) {
@@ -199,7 +206,7 @@ window.Game.Controls = (function() {
         checkObjectDistance: function (z, minZ, maxZ) {
             let readable = this.isObjectReadable(z, minZ, maxZ);
             if (readable) {
-                window.navigator.vibrate(0);
+                this.stopVibration();
             } else {
                 const range = maxZ - minZ;
                 let dist;
@@ -211,19 +218,33 @@ window.Game.Controls = (function() {
                 }
 
                 let proximity = Math.floor(dist / range);
-                let vibrationPeriod = 0;
-                switch (proximity) {
-                    case 0: vibrationPeriod = 200; break;
-                    case 1: vibrationPeriod = 300; break;
-                    case 2: vibrationPeriod = 400; break;
-                    case 3: vibrationPeriod = 800; break;
-                    case 4: vibrationPeriod = 1500; break;
-                    case 5: vibrationPeriod = 2000; break;
-                    case 6: vibrationPeriod = 3000; break;
+                let period = 200 + proximity * 200;
+                if (proximity > MIN_VIBRATION_LEVEL) {
+                    period = 0;
                 }
-                window.navigator.vibrate(vibrationPeriod);
+                this.vibrate(proximity, period);
             }
             return readable;
+        },
+
+        prepareVibration: function () {
+            const period = Math.max(this.vibration.period, 200);
+            if (this.vibration.level <= MIN_VIBRATION_LEVEL) {
+                window.navigator.vibrate(100);
+                console.log("vibrei");
+            }
+            setTimeout(() => this.prepareVibration(), period);
+        },
+
+        vibrate: function(level, period) {
+            this.vibration.level = level;
+            this.vibration.period = period;
+        },
+
+        stopVibration: function() {
+            this.vibration.period = 0;
+            this.vibration.level = MIN_VIBRATION_LEVEL + 1;
+            window.navigator.vibrate(0);
         },
 
         gameControl: function () {
