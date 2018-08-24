@@ -1,6 +1,17 @@
 window.Game.Events = (function() {
     'use strict';
 
+    const varEvents = {
+        pendriveProgrammer: false,
+        event: false,
+        mirror: {
+            [Game.ROLES.DEVELOPER]: false,
+            [Game.ROLES.TEACHER]: false,
+            [Game.ROLES.ATHLETE]: false,
+            [Game.ROLES.SCIENTIST]: false,
+        }
+    };
+
     function Events(game) {
         this.game = game;
         this.shown = new Set();
@@ -9,26 +20,36 @@ window.Game.Events = (function() {
 
     function pendriveInPc(game, shown) {
         var found = shown.has('pendrive') && shown.has('pc');
-        if (found) {
+        if (found || varEvents.pendriveProgrammer) {
 
-            if (game.getUser().role === Game.ROLES.DEVELOPER) {
+            if (game.getUser().role === Game.ROLES.DEVELOPER || varEvents.pendriveProgrammer) {
+                varEvents.pendriveProgrammer = true;
                 game.setText(Game.STRINGS.pendrive.content);
             } else {
                 game.setText(Game.STRINGS.pendrive.cant_open);
             }
         }
+
         return found;
     }
 
     function pc(game, shown) {
         if (!pendriveInPc(game, shown)) {
-            if (shown.has('pc') && shown.has('cd') &&
-                game.getUser().role === Game.ROLES.DEVELOPER) {
+            if (shown.has('pc') && shown.has('cd')) {
 
-                if (prompt('Digite a senha para abrir o CD', '').toUpperCase() === 'BCN16') {
+                if (varEvents.event) {
                     game.setText(Game.STRINGS.pc.cd);
-                } else {
-                    game.setText(Game.STRINGS.pc.password);
+                } else if (game.getUser().role === Game.ROLES.DEVELOPER) {
+
+                    game.setText('Digite a senha para abrir o CD');
+                    let tryPass = prompt('Digite a senha para abrir o CD', '').toLowerCase();
+
+                    if (tryPass.indexOf('bcn') >= 0 && tryPass.indexOf('16') >= 0) {
+                        game.setText(Game.STRINGS.pc.cd);
+                        varEvents.event = true;
+                    } else {
+                        game.setText(Game.STRINGS.pc.password);
+                    }
                 }
             }
         }
@@ -49,8 +70,20 @@ window.Game.Events = (function() {
     }
 
     function kingMirror(game, shown) {
+        varEvents.mirror[game.getUser().role] = true;
+
         if (shown.has('crown') && shown.has('mirror')) {
             game.setText(Game.STRINGS.crown.king);
+        } else {
+
+            let all = true;
+            for (let key in varEvents.mirror) {
+                all = all && varEvents.mirror[key];
+            }
+
+            if (all) {
+                game.setText(Game.STRINGS.mirror.all)
+            }
         }
     }
 
@@ -118,9 +151,10 @@ window.Game.Events = (function() {
                 if (showing) {
                     let zPosition = object.object3D.position.z;
                     let values = Game.STRINGS[id];
+                    shown.add(id);
+
                     if (game.checkObjectDistance(zPosition, values.minZ, values.maxZ)) {
                         if (speak) {
-                            shown.add(id);
                             game.setConditionalText(Game.STRINGS[id]);
                             fnFound && fnFound(game, shown);
                             speak = false;

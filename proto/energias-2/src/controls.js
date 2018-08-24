@@ -98,11 +98,11 @@ window.Game.Controls = (function() {
             let chargeMultiplier;
 
             if (this.totalTime < 10 * Game.MINUTES) {
-                chargeMultiplier = 0.01;
-            } else if (this.totalTime < 20 * Game.MINUTES) {
-                chargeMultiplier = 0.013;
-            } else if (this.totalTime < 30 * Game.MINUTES) {
                 chargeMultiplier = 0.02;
+            } else if (this.totalTime < 20 * Game.MINUTES) {
+                chargeMultiplier = 0.022;
+            } else if (this.totalTime < 30 * Game.MINUTES) {
+                chargeMultiplier = 0.03;
             } else {
                 chargeMultiplier = 0.04;
             }

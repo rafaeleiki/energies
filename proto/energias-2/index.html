@@ -21,6 +21,7 @@
 
                 marker.addEventListener('markerFound', function() {
                     var markerId = marker.id;
+                    window.b = marker;
                     console.log('markerFound', markerId);
                 });
 
@@ -191,9 +192,8 @@
     var events = new Game.Events(window.game);
     window.game.start();
 
-    // setInterval(function() {
-    //     var b = document.querySelector('#books');
-    //     console.log(b.object3D.position);
-    // }, 1000);
+    setInterval(function() {
+        console.log(window.b.object3D.position);
+    }, 1000);
 </script>
 </html>

@@ -2,13 +2,26 @@ window.Intention = (function() {
 
     const intentions = [
         {
+            text: 'Eu sou o que todos procuram mas ninguém gosta de ouvir',
+            triggers: [
+                ['que', 'será', 'computador'],
+                ['quem', 'computador'],
+                ['quem', 'isso'],
+                ['o', 'que', 'é', 'isso'],
+                ['saber', 'verdade'],
+                ['descobrir', 'verdade'],
+                ['será', 'verdade'],
+            ],
+        },
+        {
             text: 'A luva transforma movimento em energia',
             triggers: [
                 ['como', 'recarrega'],
                 ['você', 'sabe', 'recarregar'],
                 ['recarregar', 'bateria'],
                 ['acabando', 'bateria'],
-                ['como', 'carrega']
+                ['como', 'carrega'],
+                ['informação', 'luz']
             ],
         },
         {
@@ -18,7 +31,8 @@ window.Intention = (function() {
                 ['código', 'objeto'],
                 ['vibrou', 'perto'],
                 ['perto', 'luva'],
-                ['luva', 'vibrando']
+                ['luva', 'vibrando'],
+                ['luva', 'guarda']
             ]
         },
         {
@@ -39,6 +53,49 @@ window.Intention = (function() {
                 ['senhora'],
                 ['senhorinha']
             ]
+        },
+        {
+            text: 'Quando pessoas se juntam para dar energia boa, a energia ruim é repelida',
+            triggers: [
+                ['we', 'are', 'the', 'world']
+            ]
+        },
+        {
+            text: '"We are the world"',
+            triggers: [
+                ['michael', 'jackson'],
+            ]
+        },
+        {
+            text: 'Tudo que nos resta é empatia',
+            triggers: [
+                ['empatia'],
+                ['energia', 'boa'],
+            ]
+        },
+        {
+            text: 'A Ana é a avó do Rafael',
+            triggers: [
+                ['neto', 'rafael'],
+                ['avó', 'ana']
+            ]
+        },
+        {
+            text: 'Alguns objetos guardam energia boa, outros tem energia ruim',
+            triggers: [
+                ['objeto', 'energia']
+            ]
+        },
+        {
+            text: 'Ana era uma física que não foi ouvida por ser mulher',
+            triggers: [
+                ['fisica', 'ana'],
+                ['cientista', 'ana'],
+                ['ana', 'fazia'],
+            ]
+        },
+        {
+            text: ''
         }
     ];
 
@@ -47,7 +104,11 @@ window.Intention = (function() {
         'carregar',
         'senhora',
         'cientista',
-        'energia'
+        'energia',
+        'cantor',
+        'música',
+        'dúvidas',
+        'dúvida'
     ];
 
     function findIntention(text) {
