@@ -168,7 +168,7 @@ window.Game.Events = (function() {
                 showing = false;
                 speak = false;
                 game.stopVibration();
-                this.markerLost.bind(this, id, fnLost);
+                this.markerLost(id, fnLost);
             });
 
             object.addEventListener('markerFound', function () {

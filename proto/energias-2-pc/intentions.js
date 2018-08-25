@@ -32,7 +32,9 @@ window.Intention = (function() {
                 ['vibrou', 'perto'],
                 ['perto', 'luva'],
                 ['luva', 'vibrando'],
-                ['luva', 'guarda']
+                ['luva', 'guarda'],
+                ['dispositivo', 'funciona'],
+                ['dispositivo', 'guarda']
             ]
         },
         {
@@ -52,6 +54,13 @@ window.Intention = (function() {
                 ['história', 'velha'],
                 ['senhora'],
                 ['senhorinha']
+            ]
+        },
+        {
+            text: 'Galileu foi um físico, assim como Ana',
+            triggers: [
+                ['galileu', 'livro'],
+                ['galileu', 'ana']
             ]
         },
         {

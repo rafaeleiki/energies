@@ -32,8 +32,8 @@ window.Game.STRINGS = (function() {
             [r.DEVELOPER]: 'Tem um esquema de como colocar dispositivos, CDs e disquetes em um computador.',
             [r.ATHLETE]: 'Alguns detalhes estão pequenos na folha, não dá para ler direito.',
             details: {
-                default: 'Agora dá para ler melhor: "combinar itens diferentes pode gerar energias novas"',
-                [r.TEACHER]: '"Ana era muda e mulher; pra publicar sua pesquisa, colocou o nome que daria a seu filho: Rafael"',
+                default: 'Combinar itens diferentes pode gerar energias novas',
+                [r.TEACHER]: 'Ana era muda e mulher; pra publicar sua pesquisa, precisou...',
                 [r.SCIENTIST]: 'O filho de Ana se chamava Rafael; o neto de Ana também',
                 [r.ATHLETE]: 'Parece que Ana estudava física.'
             },
@@ -42,24 +42,24 @@ window.Game.STRINGS = (function() {
         },
 
         battery: {
-            charging: 'Uma bateria extra! O dispositivo está sendo recarregado',
+            charging: 'O dispositivo está sendo recarregado',
             charged: 'Parece que acabou a energia dessa bateria',
             minZ: -24,
             maxZ: -4
         },
 
         books: {
-            default: '"Diálogo Sobre os Dois Máximos Sistemas do Mundo Ptolomaico e Coperniano", de Galileu Galilei.',
-            [r.TEACHER]: 'Galileu foi um grande físico que foi calado por muitos anos porque seu pensamento ia contra o da Igreja.',
+            default: '"Diálogo Sobre os Dois Máximos", livro de Galileu Galilei.',
+            [r.TEACHER]: 'Galileu foi um físico que foi calado por muitos anos porque seu pensamento ia contra o da Igreja.',
             [r.SCIENTIST]: 'Todos esses itens históricos...será que tem alguma relação com o estado das pessoas que viveram com eles?',
-            galileu: 'Se as palavras também tem energia...o que não foi dito guarda energia? Com esses dois juntos parece que a energia está intensa',
+            galileu: 'Se as palavras também tem energia...o que não foi dito guarda energia?',
             minZ: -4.5,
             maxZ: -3.8
         },
 
         pc: {
             default: 'Parece um computador velho',
-            cd: 'O neto de Ana guardou suas coisas sem saber que eram dela; Rafael não percebeu o que isso poderia causar.',
+            cd: 'O neto de Ana guardou suas coisas sem saber que eram dela.',
             password: 'Senha incorreta. Você não lembra qual evento que você não iria esquecer?',
             minZ: -5,
             maxZ: -4
