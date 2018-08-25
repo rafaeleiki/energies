@@ -195,6 +195,7 @@ window.Game.Controls = (function() {
             const synth = window.speechSynthesis;
             if (content !== this.speech.text.text || !synth.speaking) {
                 this.speech.text.text = content;
+                synth.cancel();
                 synth.speak(this.speech.text);
             }
         },

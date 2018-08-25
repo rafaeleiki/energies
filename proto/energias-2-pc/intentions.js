@@ -94,9 +94,6 @@ window.Intention = (function() {
                 ['ana', 'fazia'],
             ]
         },
-        {
-            text: ''
-        }
     ];
 
     const relatedWords = [
