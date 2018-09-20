@@ -60,11 +60,11 @@ window.Game.STRINGS = (function() {
         },
         magazine: {
             default: 'Eu adoro ler essa revista. Ela fala de ciência. Foi o senhor lobo que me deu.',
-            found: 'Você achou a chave! Agora precisamos levar pra casa da vovó. Vamos precisar de um carro e bateria pro carro. Mostra essas coisas ao mesmo tempo pra mim.',
+            found: 'Vocês acharam a chave! Agora precisamos levar pra casa da vovó. Vamos precisar de um carro e bateria pro carro. Mostra essas coisas ao mesmo tempo pra mim.',
             minZ: -12,
             maxZ: -7
         },
-        end: 'Uhul! Você levou a chave pra vovó. Obrigada pela ajuda!'
+        end: 'Vocês conseguiram! Vocês levaram a chave pra vovó. Obrigada pela ajuda!'
     };
 
     return STRINGS;
