@@ -59,9 +59,14 @@
             if (intention) {
                 speech.text = intention.text;
             } else if (relatedWords.length > 2) {
-                speech.text = 'Acho que tem algo haver com ' + relatedWords.join(', ');
+                speech.text = 'Eu lembro das palavras ' + relatedWords.join(', ');
             } else {
-                speech.text = 'Eu não sei sobre o que você disse';
+                const index = Math.floor(Math.random() + 0.5);
+                const possibilities = [
+                    'Eu não lembro nada sobre isso',
+                    'que?!'
+                ];
+                speech.text = possibilities[index];
             }
             window.speechSynthesis.speak(speech);
         };

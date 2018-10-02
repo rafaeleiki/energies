@@ -2,11 +2,25 @@ window.Intention = (function() {
 
     const intentions = [
         {
+            text: 'Obrigada meu filho! Eu bati a cabeça e estou esquecendo das coisas.',
+            triggers: [
+                ['vovó', 'ajudar'],
+                ['vovó', 'ajuda'],
+                ['vamos', 'ajudar'],
+                ['claro', 'vovó']
+            ],
+        },
+        {
+            text: 'Tudo bem também, obrigada por perguntar.',
+            triggers: [
+                ['tudo bem'],
+            ],
+        },
+        {
             text: 'Oi, tudo bem?',
             triggers: [
                 ['oi'],
                 ['olá'],
-                ['tudo bem'],
                 ['bom dia'],
                 ['boa tarde']
             ],
@@ -14,6 +28,9 @@ window.Intention = (function() {
         {
             text: 'Eu estou na minha casa e não consigo achar a chave da porta. Vocês podem trazer pra mim?',
             triggers: [
+                ['conta', 'história'],
+                ['qual', 'seu', 'problema'],
+                ['qual', 'problema', 'vovó'],
                 ['me', 'explica', 'história'],
                 ['fala', 'que', 'acontecendo'],
                 ['me', 'explica', 'acontecendo']
@@ -25,19 +42,57 @@ window.Intention = (function() {
                 ['lobo', 'mal'],
                 ['lobo', 'mau']
             ]
-        }
+        },
+        {
+            text: 'Eu tava com a chapéuzinho vermelho quando perdi a chave.',
+            triggers: [
+                ['onde', 'chave'],
+                ['cade', 'chave'],
+            ]
+        },
+        {
+            text: 'Pra vir pra cá é só pegar um carro!',
+            triggers: [
+                ['como', 'chega', 'ai'],
+                ['como', 'levo', 'chave'],
+                ['como', 'leva', 'chave'],
+            ]
+        },
+        {
+            text: 'A chapéuzinho vermelho é a minha neta e prima de vocês!',
+            triggers: [
+                ['quem', 'é', 'chapeuzinho'],
+                ['conhece', 'chapeuzinho'],
+            ]
+        },
+        {
+            text: 'Quando eu era mais nova eu era uma soldada!',
+            triggers: [
+                ['você', 'trabalhava'],
+                ['qual', 'profissão'],
+            ]
+        },
+        {
+            text: 'Você quer ouvir uma história? Eu não lembro de nenhuma agora.',
+            triggers: [
+                ['essa', 'história'],
+            ]
+        },
+        {
+            text: 'Eu não consigo mais trabalhar, então fico em casa vendo Netflix.',
+            triggers: [
+                ['por que', 'em casa'],
+                ['porque', 'em casa'],
+            ]
+        },
     ];
 
     const relatedWords = [
-        'bateria',
-        'carregar',
         'senhora',
-        'cientista',
-        'energia',
-        'cantor',
-        'música',
-        'dúvidas',
-        'dúvida'
+        'chave',
+        'profissão',
+        'chapéuzinho',
+        'história'
     ];
 
     function findIntention(text) {
