@@ -82,6 +82,12 @@
 
         setInterval(() => {
             if (!speaking) {
+                const random = Math.random();
+                if (random < 0.01) {
+                    speech.text = randomText();
+                    window.speechSynthesis.speak(speech);
+                }
+
                 try {
                     recognition.start();
                 } catch (e) {}
@@ -94,6 +100,18 @@
     function start() {
         prepareSpeech();
         prepareRecognition();
+    }
+
+    function randomText() {
+        const texts = [
+          'O olho mágico ajuda a ver mais coisas',
+          'Eu acho que são 9 no álbum da família',
+          'Sabia que a luva consegue enxergar mais de uma coisa ao mesmo tempo?',
+          'Quando você descobrir algo, desenhe e coloque no quadro',
+          'Eu queria poder usar a luva também!',
+        ];
+        const random = Math.floor(Math.random() * texts.length + 1) % texts.length;
+        return texts[random];
     }
 
     start();

@@ -53,12 +53,48 @@ window.Intention = (function() {
             ]
         },
         {
-            text: 'Pra vir pra cá é só pegar um carro!',
+            text: 'Tetris é um videogame de encaixar peças. É muito legal!',
             triggers: [
-                ['como', 'chega', 'ai'],
-                ['como', 'levo', 'chave'],
-                ['como', 'leva', 'chave'],
-                ['como', 'faz', 'levar']
+                ['tetris'],
+                ['game'],
+                ['videogame'],
+            ]
+        },
+        {
+            text: 'O colar é meu, eu acho.',
+            triggers: [
+                ['colar'],
+            ]
+        },
+        {
+            text: 'Quando você coloca o olho mágico na luva, ela lembra de novas coisas.',
+            triggers: [
+                ['olho', 'mágico'],
+                ['olho', 'caçador'],
+            ]
+        },
+        {
+            text: 'Eu não sei, mas se você colocar as pilhas no celular talvez dê pra descobrir.',
+            triggers: [
+                ['quem', 'faltando'],
+                ['quem', 'família'],
+                ['quem', 'álbum'],
+            ]
+        },
+        {
+            text: 'Ela tinha longos cabelos azuis e uma bolsa com várias maçãs.',
+            triggers: [
+                ['como', 'mãe', 'chapeuzinho'],
+                ['como', 'mamãe', 'chapeuzinho'],
+                ['como', 'mamãe', 'vermelho'],
+            ]
+        },
+        {
+            text: 'A maẽ da chapeuzinho vermelho se chama mamãe vermelho.',
+            triggers: [
+                ['mãe', 'chapeuzinho'],
+                ['mamãe', 'chapeuzinho'],
+                ['mamãe', 'vermelho'],
             ]
         },
         {
@@ -66,6 +102,7 @@ window.Intention = (function() {
             triggers: [
                 ['quem', 'é', 'chapeuzinho'],
                 ['conhece', 'chapeuzinho'],
+                ['chapeuzinho']
             ]
         },
         {
