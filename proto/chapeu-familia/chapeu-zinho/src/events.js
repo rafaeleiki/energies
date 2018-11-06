@@ -65,7 +65,7 @@ window.Game.Events = (function() {
 
                     if (game.checkObjectDistance(zPosition, values.minZ, values.maxZ)) {
                         if (speak) {
-                            game.setConditionalText(Game.STRINGS[id]);
+                            game.setConditionalText(Game.STRINGS[id], varEvents.magnetometer);
                             fnFound && fnFound(game, shown);
                             speak = false;
                         }
