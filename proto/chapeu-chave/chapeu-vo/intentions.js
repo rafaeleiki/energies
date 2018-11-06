@@ -2,6 +2,16 @@ window.Intention = (function() {
 
     const intentions = [
         {
+            text: 'Obrigada! Vocês me ajudaram muito!',
+            triggers: [
+                ['encontrei', 'chave'],
+                ['encontramos', 'chave'],
+                ['encontrou', 'chave'],
+                ['achamos', 'chave'],
+                ['achamos', 'chaves']
+            ],
+        },
+        {
             text: 'Obrigada meu filho! Eu bati a cabeça e estou esquecendo das coisas.',
             triggers: [
                 ['vovó', 'ajudar'],
@@ -40,7 +50,8 @@ window.Intention = (function() {
             text: 'O lobo é só um animal como qualquer outro.',
             triggers: [
                 ['lobo', 'mal'],
-                ['lobo', 'mau']
+                ['lobo', 'mau'],
+                ['sabe', 'labo']
             ]
         },
         {
@@ -48,6 +59,7 @@ window.Intention = (function() {
             triggers: [
                 ['onde', 'chave'],
                 ['cade', 'chave'],
+                ['cadê', 'chave'],
             ]
         },
         {
@@ -56,6 +68,7 @@ window.Intention = (function() {
                 ['como', 'chega', 'ai'],
                 ['como', 'levo', 'chave'],
                 ['como', 'leva', 'chave'],
+                ['como', 'faz', 'levar']
             ]
         },
         {
@@ -70,6 +83,12 @@ window.Intention = (function() {
             triggers: [
                 ['você', 'trabalhava'],
                 ['qual', 'profissão'],
+                ['você', 'soldado'],
+                ['vovó', 'soldado'],
+                ['você', 'soldada'],
+                ['vovó', 'soldada'],
+                ['vovó', 'exército'],
+                ['você', 'exército']
             ]
         },
         {

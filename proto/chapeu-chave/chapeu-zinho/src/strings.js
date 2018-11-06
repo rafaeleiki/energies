@@ -60,7 +60,7 @@ window.Game.STRINGS = (function() {
         },
         magazine: {
             default: 'Eu adoro ler essa revista. Ela fala de ciência. Foi o senhor lobo que me deu.',
-            found: 'Vocês acharam a chave! Agora precisamos levar pra casa da vovó. Vamos precisar de um carro e bateria pro carro. Mostra essas coisas ao mesmo tempo pra mim.',
+            found: 'Lembrei! A chave está debaixo do computador. Pra levar a chave pra casa da vovó, vamos precisar de um carro e bateria pro carro. Mostra essas coisas ao mesmo tempo pra mim.',
             minZ: -12,
             maxZ: -7
         },
