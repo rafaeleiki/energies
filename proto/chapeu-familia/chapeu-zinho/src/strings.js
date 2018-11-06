@@ -3,68 +3,69 @@ window.Game.STRINGS = (function() {
     var r = Game.ROLES;
     var STRINGS = {
         phone: {
-            default: 'Pra cada objeto, eu preciso que você coloque a sua mão na distância certa. Eu vou vibrar a luva pra te avisar se você está perto.',
-            found: 'Oi, aqui é a chapéuzinho vermelho! Eu vou te ajudar a encontrar a chave da vovó. Eu estou vendo tudo pelo celular na luva, mas eu tenho problema de vista. Pra cada objeto, eu preciso que você coloque a sua mão na distância certa. Eu vou vibrar a luva pra te avisar se você está perto.',
+            default: 'Chapéuzinho branco usa muito o celular?',
+            eye: 'Falaram pro caçador que o lobo comeu a vovó.',
+            battery: 'Apareceu o número da mamãe vermelho.',
             minZ: -12,
             maxZ: -7
         },
         game: {
-            default: 'A vovó gosta de jogar game.',
+            default: 'A vovó gosta de jogar Tetris.',
+            eye: 'A chapeuzinho não gosta de videogames.',
+            battery: 'A mamãe da chapeuzinho vermelho joga com ela.',
             minZ: -10,
             maxZ: -7
         },
         battery: {
-            default: 'Com essas pilhas, dá pra dar energia até para um carro andar!',
+            default: 'O que chapeuzinho preto gosta de fazer?',
+            eye: 'A chapeuzinho vermelho gosta de sair.',
             minZ: -12,
             maxZ: -7
         },
         glasses: {
-            default: 'A vovó não enxerga muito bem. Acho que esses são os óculos dela.',
+            default: 'A vovó não enxerga muito bem.',
+            eye: 'A vovó tava com o óculos quando ela bateu a cabeça.',
             minZ: -11,
             maxZ: -8
         },
         dino: {
-            default: 'Eu fui com a vovó no museu e a gente viu vários dinossauros. A gente gosta de aprender coisas novas.',
-            found: 'Lembrei! Depois de ir no museu, andamos pela floresta e encontramos o lobo. O que é o que é: você joga e ele volta?',
+            default: 'O caçador Dino está procurando o lobo.',
+            eye: 'A vovó se fantasiou de lobo no dia das bruxas e o Dino viu.',
             minZ: -12,
             maxZ: -9
         },
         racket: {
-            default: 'A vovó bateu a cabeça muito forte uma vez, ai ela parou de praticar esportes.',
-            found: 'Essa é a raquete que eles estavam usando! Eu lembrei! Eu tava com a chave da vovó e derrubei ela em alguma coisa que eu tava lendo.',
+            default: 'Chapeuzinho de palha gosta de brincar do que?',
+            eye: 'O caçador gosta de correr na floresta.',
             minZ: -10,
             maxZ: -7
         },
         drive: {
-            default: 'Usando esse volante do carro, dá pra gente ir até a casa da vovó.',
+            default: 'Chapeuzinho azul quer ter um carro?',
+            eye: 'A chapeuzinho vermelho tem 20 anos e dirige até a casa da vovó.',
+            battery: 'A chapeuzinho vermelho aprendeu a dirigir com a mamãe vermelho.',
             minZ: -20,
             maxZ: -8
         },
         tank: {
             default: 'A vovó era uma soldada do exército quando mais nova.',
-            found: 'Quando a vovó tava com o pessoal do exército, tinham pessoas jogando uma partida de algum esporte. Tinham duas pessoas batendo em uma bolinha branca em cima de uma mesa.',
+            eye: 'Vovó nunca gostou de estar perto de armas.',
             minZ: -12,
             maxZ: -8
         },
         yoyo: {
-            default: 'Você achou meu ioiô! Um dia eu fui para a casa da vovó levar doces e no caminho eu encontrei um lobo. Eu fiquei com medo e derrubei o meu brinquedo.',
-            found: 'Meu ioiô! Eu tinha derrubado ele na floresta quando vi o lobo. A vovó foi visitar o antigo trabalho dela depois disso.',
+            default: 'O lobo encontrou o ioiô da chapeuzinho vermelho e devolveu pra ela.',
+            eye: 'O lobo é bondoso, mas esquisito.',
             minZ: -9,
             maxZ: -7
         },
         necklace: {
-            default: 'Eu soube que o lobo quer pegar esse colar pra ele.',
-            found: 'Ah, lembrei de uma coisa! A última vez que a vovó tava com a chave a gente foi em um museu e viu uns bichos bem grandes.',
+            default: 'Parece que o lobo quer esse colar.',
+            eye: 'O lobo é o dono do colar, mas a vovó esqueceu e pegou pra ela.',
             minZ: -10,
             maxZ: -7
         },
-        magazine: {
-            default: 'Eu adoro ler essa revista. Ela fala de ciência. Foi o senhor lobo que me deu.',
-            found: 'Lembrei! A chave está debaixo do computador. Pra levar a chave pra casa da vovó, vamos precisar de um carro e bateria pro carro. Mostra essas coisas ao mesmo tempo pra mim.',
-            minZ: -12,
-            maxZ: -7
-        },
-        end: 'Vocês conseguiram! Vocês levaram a chave pra vovó. Obrigada pela ajuda!'
+        eye: 'Olho mágico do caçador'
     };
 
     return STRINGS;

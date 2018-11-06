@@ -25,21 +25,26 @@ window.Game.Events = (function() {
         this.addListeners();
     }
 
+    function withBattery(id, game, shown) {
+        if (shown.has(id) && shown.has('battery')) {
+            game.setText(Game.STRINGS[id].battery);
+        }
+    }
+
     Events.prototype = {
         addListeners: function () {
             this.addGlobalListeners();
 
-            this.createTextObject('phone');
-            this.createTextObject('game');
+            this.createTextObject('phone', withBattery.bind(this, 'phone'));
+            this.createTextObject('game', withBattery.bind(this, 'game'));
             this.createTextObject('battery');
             this.createTextObject('glasses');
             this.createTextObject('dino');
             this.createTextObject('racket');
-            this.createTextObject('drive');
+            this.createTextObject('drive', withBattery.bind(this, 'drive'));
             this.createTextObject('tank');
             this.createTextObject('yoyo');
             this.createTextObject('necklace');
-            this.createTextObject('magazine');
             this.createTextObject('eye');
 
             var game = this.game;
