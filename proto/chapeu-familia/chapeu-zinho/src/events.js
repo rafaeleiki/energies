@@ -5,7 +5,6 @@ navigator.permissions.query({name:'magnetometer'}).then(function(result) {
         magSensor.addEventListener('reading', e => {
             const sum = Math.abs(magSensor.x) + Math.abs(magSensor.y) + Math.abs(magSensor.z);
             varEvents.magnetometer = sum > 80;
-            console.log(varEvents.magnetometer);
         });
         magSensor.start();
     }
@@ -65,7 +64,12 @@ window.Game.Events = (function() {
 
                     if (game.checkObjectDistance(zPosition, values.minZ, values.maxZ)) {
                         if (speak) {
-                            game.setConditionalText(Game.STRINGS[id], varEvents.magnetometer);
+                            console.log(varEvents.magnetometer);
+                            if (varEvents.magnetometer) {
+                                game.setText(Game.STRINGS[id].eye);
+                            } else {
+                                game.setText(Game.STRINGS[id].default);
+                            }
                             fnFound && fnFound(game, shown);
                             speak = false;
                         }
