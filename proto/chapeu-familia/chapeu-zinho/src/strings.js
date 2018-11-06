@@ -65,7 +65,11 @@ window.Game.STRINGS = (function() {
             minZ: -10,
             maxZ: -7
         },
-        eye: 'Olho mágico do caçador'
+        eye: {
+            default: 'Olho mágico do caçador',
+            minZ: -10,
+            maxZ: -7
+        }
     };
 
     return STRINGS;
