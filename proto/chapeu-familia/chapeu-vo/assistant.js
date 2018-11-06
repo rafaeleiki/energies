@@ -78,6 +78,15 @@
                 speech.text = possibilities[index];
             }
             window.speechSynthesis.speak(speech);
+            if (speech.text === window.Intention.FINAL_TEXT) {
+                setTimeout(() => {
+                    const audio = new Audio('applause.mp3');
+                    audio.loop = true;
+                    audio.play();
+                    recognition.abort();
+                    speaking = true;
+                }, 5000);
+            }
         };
 
         setInterval(() => {
@@ -105,7 +114,7 @@
     function randomText() {
         const texts = [
           'O olho mágico ajuda a ver mais coisas',
-          'Eu acho que são 9 no álbum da família',
+          'Eu acho que são 9 pessoas no álbum da família',
           'Sabia que a luva consegue enxergar mais de uma coisa ao mesmo tempo?',
           'Quando você descobrir algo, desenhe e coloque no quadro',
           'Eu queria poder usar a luva também!',

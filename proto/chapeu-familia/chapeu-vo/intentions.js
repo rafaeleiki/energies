@@ -1,5 +1,7 @@
 window.Intention = (function() {
 
+    const FINAL_TEXT = 'Obrigada! Estou muito feliz com a ajuda de vocês!';
+
     const intentions = [
         {
             text: 'Obrigada! Vocês me ajudaram muito!',
@@ -19,6 +21,12 @@ window.Intention = (function() {
                 ['vamos', 'ajudar'],
                 ['claro', 'vovó']
             ],
+        },
+        {
+            text: FINAL_TEXT,
+            triggers: [
+                ['terminamos', 'vovó'],
+            ]
         },
         {
             text: 'Eu bati a cabeça e estou esquecendo das coisas.',
@@ -189,5 +197,6 @@ window.Intention = (function() {
     return {
         find: findIntention,
         isRelated,
+        FINAL_TEXT
     };
 })();
