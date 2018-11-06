@@ -193,10 +193,10 @@ window.Game.Controls = (function() {
             }
         },
 
-        setConditionalText: function (conditions, eye) {
+        setConditionalText: function (conditions) {
             var user = this.getUser();
-            if (eye) {
-                this.setText(conditions.eye);
+            if (conditions[user.role]) {
+                this.setText(conditions[user.role]);
             } else if (conditions.default) {
                 this.setText(conditions.default);
             } else {
